@@ -8,13 +8,11 @@ import "testing";
 import "github.com/bmizerany/assert";
 
 
-/*
- * Internal: used by all tests to parse a User-Agent string.
- *
- * ua - the User-Agent string.
- *
- * Returns a reference to a newly created UserAgent.
- */
+// Internal: used by all tests to parse a User-Agent string.
+//
+// ua - the User-Agent string.
+//
+// Returns a reference to a newly created UserAgent.
 func parse(ua string) *UserAgent {
     parser := new(UserAgent);
     parser.Parse(ua);

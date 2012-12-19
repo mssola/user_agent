@@ -7,14 +7,12 @@ package user_agent;
 import "strings";
 
 
-/*
- * Internal: normalize the name of the operating system. By now, this just
- * affects to Windows.
- *
- * name - The original name of the Operating System.
- *
- * Returns a string containing the normalized name for the Operating System.
- */
+// Internal: normalize the name of the operating system. By now, this just
+// affects to Windows.
+//
+// name - The original name of the Operating System.
+//
+// Returns a string containing the normalized name for the Operating System.
 func normalizeOS(name string) string {
     windows := map[string] string {
         "Windows NT 6.2": "Windows 8",
@@ -35,13 +33,11 @@ func normalizeOS(name string) string {
     return name;
 }
 
-/*
- * Internal: guess the OS, the localization and if this is a mobile device
- * for a Webkit-powered browser.
- *
- * p       - a reference to the current UserAgent.
- * comment - a slice of strings containing the comment.
- */
+// Internal: guess the OS, the localization and if this is a mobile device
+// for a Webkit-powered browser.
+//
+// p       - a reference to the current UserAgent.
+// comment - a slice of strings containing the comment.
 func webkit(p *UserAgent, comment []string) {
     if p.platform == "webOS" {
         p.browser.name = p.platform;
@@ -88,13 +84,11 @@ func webkit(p *UserAgent, comment []string) {
     }
 }
 
-/*
- * Internal: guess the OS, the localization and if this is a mobile device
- * for a Gecko-powered browser.
- *
- * p       - a reference to the current UserAgent.
- * comment - a slice of strings containing the comment.
- */
+// Internal: guess the OS, the localization and if this is a mobile device
+// for a Gecko-powered browser.
+//
+// p       - a reference to the current UserAgent.
+// comment - a slice of strings containing the comment.
 func gecko(p *UserAgent, comment []string) {
     if p.platform == "Android" {
         p.mobile = true;
@@ -111,14 +105,12 @@ func gecko(p *UserAgent, comment []string) {
     }
 }
 
-/*
- * Internal: given the comment of the first section of the UserAgent string,
- * get the platform.
- *
- * comment - a slice of strings containing the comment itself.
- *
- * Returns a string that is the platform.
- */
+// Internal: given the comment of the first section of the UserAgent string,
+// get the platform.
+//
+// comment - a slice of strings containing the comment itself.
+//
+// Returns a string that is the platform.
 func getPlatform(comment []string) string {
     if len(comment) > 0 {
         if comment[0] != "compatible" {
@@ -137,14 +129,9 @@ func getPlatform(comment []string) string {
     return "";
 }
 
-/*
- * Internal: detect some properties of the OS.
- *
- * section - an UASection containing the first section of the User-Agent
- *           string.
- *
- * Receiver: an UserAgent reference.
- */
+// Internal: detect some properties of the OS.
+//
+// section - an UASection containing the first section of the User-Agent.
 func (p *UserAgent) detectOS(section UASection) {
     if section.name == "Mozilla" {
         p.platform = getPlatform(section.comment);
@@ -188,26 +175,17 @@ func (p *UserAgent) detectOS(section UASection) {
     }
 }
 
-/*
- * Receiver: an UserAgent reference.
- * Returns a string containing the platform..
- */
+// Returns a string containing the platform..
 func (p *UserAgent) Platform() string {
     return p.platform;
 }
 
-/*
- * Receiver: an UserAgent reference.
- * Returns a string containing the name of the Operating System.
- */
+// Returns a string containing the name of the Operating System.
 func (p *UserAgent) OS() string {
     return p.os;
 }
 
-/*
- * Receiver: an UserAgent reference.
- * Returns a string containing the localization.
- */
+// Returns a string containing the localization.
 func (p *UserAgent) Localization() string {
     return p.localization;
 }
