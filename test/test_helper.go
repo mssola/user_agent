@@ -1,0 +1,21 @@
+// Copyright (C) 2012 Miquel Sabaté <mikisabate@gmail.com>
+// This file is licensed under the GNU LGPL v3 or later.
+// See the LICENSE file.
+
+package user_agent;
+
+import . "../";
+
+
+/*
+ * Internal: used by all tests to parse a User-Agent string.
+ *
+ * ua - the User-Agent string.
+ *
+ * Returns a reference to a newly created UserAgent.
+ */
+func parse(ua string) *UserAgent {
+    parser := new(UserAgent);
+    parser.Parse(ua);
+    return parser;
+}

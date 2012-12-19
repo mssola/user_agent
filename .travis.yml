@@ -1,0 +1,3 @@
+
+language: go
+script: (cd test && go test -v)
