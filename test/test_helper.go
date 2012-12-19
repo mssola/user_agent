@@ -4,7 +4,7 @@
 
 package user_agent;
 
-import . "../";
+import . "user_agent";
 
 
 /*
