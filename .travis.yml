@@ -1,4 +1,1 @@
 language: go
-install:
-  - go get github.com/bmizerany/assert
-script: cd test && go test -v
