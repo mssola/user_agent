@@ -1,5 +1,5 @@
 // Copyright (C) 2012 Miquel Sabaté <mikisabate@gmail.com>
-// This file is licensed under the GNU LGPL v3 or later.
+// This file is licensed under the GNU GPL v3 or later.
 // See the LICENSE file.
 
 package user_agent;
