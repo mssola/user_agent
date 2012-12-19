@@ -1,3 +1,2 @@
-
 language: go
-script: (cd test && go test -v)
+script: cd test && go test -v
