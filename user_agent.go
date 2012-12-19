@@ -34,7 +34,7 @@ type UserAgent struct {
 
 /*
  * Internal: read from the given string until the given delimiter or the
- * end of the string has been reached.
+ * end of the string have been reached.
  *
  * ua        - The User-Agent string.
  * index     - A reference to the current index on the User-Agent string,
