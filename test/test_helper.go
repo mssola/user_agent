@@ -4,7 +4,7 @@
 
 package user_agent;
 
-import "user_agent";
+import . "../";
 
 
 /*
@@ -14,8 +14,8 @@ import "user_agent";
  *
  * Returns a reference to a newly created UserAgent.
  */
-func parse(ua string) *user_agent.UserAgent {
-    parser := new(user_agent.UserAgent);
+func parse(ua string) *UserAgent {
+    parser := new(UserAgent);
     parser.Parse(ua);
     return parser;
 }
