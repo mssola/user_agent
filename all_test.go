@@ -508,7 +508,7 @@ func TestNil(t *testing.T) {
     assert.Equal(t, str2, "");
 
     str1, str2 = ua.Browser();
-    assert.Equal(t, str1, "");
+    assert.Equal(t, str1, "nil");
     assert.Equal(t, str2, "");
 }
 
@@ -574,8 +574,8 @@ func TestAmaya(t *testing.T) {
     assert.Equal(t, str2, "5.4.0");
 
     str1, str2 = ua.Browser();
-    assert.Equal(t, str1, "");
-    assert.Equal(t, str2, "");
+    assert.Equal(t, str1, "amaya");
+    assert.Equal(t, str2, "9.51");
 }
 
 const rails = "Rails Testing";
@@ -596,7 +596,7 @@ func TestRails(t *testing.T) {
     assert.Equal(t, str2, "");
 
     str1, str2 = ua.Browser();
-    assert.Equal(t, str1, "");
+    assert.Equal(t, str1, "Rails");
     assert.Equal(t, str2, "");
 }
 
@@ -618,8 +618,30 @@ func TestPython(t *testing.T) {
     assert.Equal(t, str2, "");
 
     str1, str2 = ua.Browser();
+    assert.Equal(t, str1, "Python-urllib");
+    assert.Equal(t, str2, "2.7");
+}
+
+const curl = "curl/7.28.1";
+
+func TestCurl(t *testing.T) {
+    var str1, str2 string;
+    ua := parse(curl);
+
+    assert.Equal(t, ua.Mobile(), true);
+    assert.Equal(t, ua.Bot(), true);
+    assert.Equal(t, ua.Mozilla(), "");
+
+    assert.Equal(t, ua.Platform(), "");
+    assert.Equal(t, ua.OS(), "");
+
+    str1, str2 = ua.Engine();
     assert.Equal(t, str1, "");
     assert.Equal(t, str2, "");
+
+    str1, str2 = ua.Browser();
+    assert.Equal(t, str1, "curl");
+    assert.Equal(t, str2, "7.28.1");
 }
 
 //END: OTHER

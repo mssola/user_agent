@@ -172,6 +172,8 @@ func (p *UserAgent) detectOS(section UASection) {
         p.bot = true;
         p.mobile = true;
         p.mozilla = "";
+        p.browser.name = section.name;
+        p.browser.version = section.version;
     }
 }
 
