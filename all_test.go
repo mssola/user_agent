@@ -181,11 +181,9 @@ func TestUserAgent(t *testing.T) {
     }
 }
 
-const N = 256;
-
-// Benchmark: it parses each User-Agent string on the uastrings slice N times.
+// Benchmark: it parses each User-Agent string on the uastrings slice b.N times.
 func BenchmarkUserAgent(b *testing.B) {
-    for i := 0; i < N; i++ {
+    for i := 0; i < b.N; i++ {
         b.StopTimer();
         for _, tt := range(uastrings) {
             ua := new(UserAgent);
