@@ -40,7 +40,7 @@ type UserAgent struct {
 // delimiter - A byte containing the given delimiter.
 //
 // Returns an array of bytes containing what has been read.
-func readUntil(ua string, index *int, delimiter byte) ([]byte) {
+func readUntil(ua string, index *int, delimiter byte) []byte {
     var buffer []byte;
 
     i := *index;
@@ -98,9 +98,7 @@ func parseSection(ua string, index *int) (section UASection) {
 // receiver will be setted up with all the information that we've extracted.
 //
 // ua - a string containing the User-Agent from the browser (or the bot).
-//
-// Returns an error if something went wrong, nil otherwise.
-func (p *UserAgent) Parse(ua string) (err error) {
+func (p *UserAgent) Parse(ua string) {
     var sections []UASection;
 
     p.mobile = false;
@@ -118,7 +116,6 @@ func (p *UserAgent) Parse(ua string) (err error) {
         p.detectBrowser(sections);
         p.detectOS(sections[0]);
     }
-    return err;
 }
 
 // Internal: check if we're dealing with a Bot.
