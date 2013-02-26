@@ -2,17 +2,16 @@
 // This file is licensed under the MIT license.
 // See the LICENSE file.
 
-package user_agent;
+package user_agent
 
-import "testing";
-import "fmt";
-
+import "testing"
+import "fmt"
 
 // Slice that contains all the tests. Each test is contained in a struct
 // that groups the name of the test and the User-Agent string to be tested.
-var uastrings = []struct{
-    name string;
-    ua string;
+var uastrings = []struct {
+    name string
+    ua   string
 }{
     // Bots
     {"GoogleBot", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"},
@@ -67,7 +66,7 @@ var uastrings = []struct{
     {"BB10", "Mozilla/5.0 (BB10; Touch) AppleWebKit/537.3+ (KHTML, like Gecko) Version/10.0.9.388 Mobile Safari/537.3+"},
     {"Ericsson", "Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525"},
     {"ChromeAndroid", "Mozilla/5.0 (Linux; Android 4.2.1; Galaxy Nexus Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"},
-};
+}
 
 // Slice of the expected results from the previous slice.
 var expected = []string{
@@ -124,7 +123,7 @@ var expected = []string{
     "Mozilla:5.0 Platform:BlackBerry OS:BlackBerry Browser:BlackBerry-10.0.9.388 Engine:AppleWebKit-537.3+ Bot:false Mobile:true",
     "Mozilla:5.0 Platform:Symbian OS:SymbianOS/9.4 Browser:Symbian-3.0 Engine:AppleWebKit-525 Bot:false Mobile:true",
     "Mozilla:5.0 Platform:Linux OS:Android 4.2.1 Browser:Chrome-18.0.1025.166 Engine:AppleWebKit-535.19 Bot:false Mobile:true",
-};
+}
 
 // Internal: beautify the UserAgent reference into a string so it can be
 // tested later on.
@@ -134,47 +133,46 @@ var expected = []string{
 // Returns a string that contains the beautified representation.
 func beautify(ua *UserAgent) (s string) {
     if len(ua.Mozilla()) > 0 {
-        s += "Mozilla:" + ua.Mozilla() + " ";
+        s += "Mozilla:" + ua.Mozilla() + " "
     }
     if len(ua.Platform()) > 0 {
-        s += "Platform:" + ua.Platform() + " ";
+        s += "Platform:" + ua.Platform() + " "
     }
     if len(ua.OS()) > 0 {
-        s += "OS:" + ua.OS() + " ";
+        s += "OS:" + ua.OS() + " "
     }
     if len(ua.Localization()) > 0 {
-        s += "Localization:" + ua.Localization() + " ";
+        s += "Localization:" + ua.Localization() + " "
     }
-    str1, str2 := ua.Browser();
+    str1, str2 := ua.Browser()
     if len(str1) > 0 {
         s += "Browser:" + str1
         if len(str2) > 0 {
-            s += "-" + str2 + " ";
+            s += "-" + str2 + " "
         } else {
-            s += " ";
+            s += " "
         }
     }
-    str1, str2 = ua.Engine();
+    str1, str2 = ua.Engine()
     if len(str1) > 0 {
-        s += "Engine:" + str1;
+        s += "Engine:" + str1
         if len(str2) > 0 {
-            s += "-" + str2 + " ";
+            s += "-" + str2 + " "
         } else {
-            s += " ";
+            s += " "
         }
     }
-    s += "Bot:" + fmt.Sprintf("%v", ua.Bot()) + " ";
-    s += "Mobile:" + fmt.Sprintf("%v", ua.Mobile());
-    return s;
+    s += "Bot:" + fmt.Sprintf("%v", ua.Bot()) + " "
+    s += "Mobile:" + fmt.Sprintf("%v", ua.Mobile())
+    return s
 }
-
 
 // The test suite.
 func TestUserAgent(t *testing.T) {
-    for i, tt := range(uastrings) {
-        ua := new(UserAgent);
-        ua.Parse(tt.ua);
-        got := beautify(ua);
+    for i, tt := range uastrings {
+        ua := new(UserAgent)
+        ua.Parse(tt.ua)
+        got := beautify(ua)
         if expected[i] != got {
             t.Errorf("Test %v => %q, expected %q", tt.name, got, expected[i])
         }
@@ -184,11 +182,11 @@ func TestUserAgent(t *testing.T) {
 // Benchmark: it parses each User-Agent string on the uastrings slice b.N times.
 func BenchmarkUserAgent(b *testing.B) {
     for i := 0; i < b.N; i++ {
-        b.StopTimer();
-        for _, tt := range(uastrings) {
-            ua := new(UserAgent);
-            b.StartTimer();
-            ua.Parse(tt.ua);
+        b.StopTimer()
+        for _, tt := range uastrings {
+            ua := new(UserAgent)
+            b.StartTimer()
+            ua.Parse(tt.ua)
         }
     }
 }
