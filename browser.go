@@ -2,9 +2,11 @@
 // This file is licensed under the MIT license.
 // See the LICENSE file.
 
+
 package user_agent
 
 import "strings"
+
 
 // A struct containing all the information that we might be
 // interested from the browser.

@@ -8,8 +8,11 @@
 // information that has been extracted from a parsed User Agent string.
 package user_agent
 
-import "strings"
-import "regexp"
+import (
+    "strings"
+    "regexp"
+)
+
 
 // A "section" of the User-Agent string. A section contains the name of the
 // product, its version and an optional comment.

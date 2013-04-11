@@ -2,10 +2,14 @@
 // This file is licensed under the MIT license.
 // See the LICENSE file.
 
+
 package user_agent
 
-import "testing"
-import "fmt"
+import (
+    "testing"
+    "fmt"
+)
+
 
 // Slice that contains all the tests. Each test is contained in a struct
 // that groups the name of the test and the User-Agent string to be tested.

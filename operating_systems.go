@@ -2,9 +2,11 @@
 // This file is licensed under the MIT license.
 // See the LICENSE file.
 
+
 package user_agent
 
 import "strings"
+
 
 // Internal: normalize the name of the operating system. By now, this just
 // affects to Windows.
