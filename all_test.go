@@ -40,6 +40,7 @@ var uastrings = []struct {
     // Opera
     {"OperaMac", "Opera/9.27 (Macintosh; Intel Mac OS X; U; en)"},
     {"OperaWin", "Opera/9.27 (Windows NT 5.1; U; en)"},
+    {"OperaWinNoLocale", "Opera/9.80 (Windows NT 5.1) Presto/2.12.388 Version/12.10"},
     {"OperaMinimal", "Opera/9.80"},
     {"OperaFull", "Opera/9.80 (Windows NT 6.0; U; en) Presto/2.2.15 Version/10.10"},
     {"OperaLinux", "Opera/9.80 (X11; Linux x86_64) Presto/2.12.388 Version/12.10"},
@@ -97,6 +98,7 @@ var expected = []string{
     // Opera
     "Platform:Macintosh OS:Intel Mac OS X Localization:en Browser:Opera-9.27 Engine:Presto Bot:false Mobile:false",
     "Platform:Windows OS:Windows XP Localization:en Browser:Opera-9.27 Engine:Presto Bot:false Mobile:false",
+    "Platform:Windows OS:Windows XP Browser:Opera-9.80 Engine:Presto-2.12.388 Bot:false Mobile:false",
     "Browser:Opera-9.80 Engine:Presto Bot:false Mobile:false",
     "Platform:Windows OS:Windows Vista Localization:en Browser:Opera-9.80 Engine:Presto-2.2.15 Bot:false Mobile:false",
     "Platform:X11 OS:Linux x86_64 Browser:Opera-9.80 Engine:Presto-2.12.388 Bot:false Mobile:false",
