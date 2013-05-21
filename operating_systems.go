@@ -71,6 +71,8 @@ func webkit(p *UserAgent, comment []string) {
         }
         if strings.HasPrefix(comment[0], "Windows NT") {
             p.os = normalizeOS(comment[0])
+        } else if len(comment) < 2 {
+            p.localization = comment[0]
         } else if len(comment) < 3 {
             p.os = normalizeOS(comment[1])
         } else {
