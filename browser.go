@@ -23,24 +23,26 @@ type Browser struct {
 // sections - a slice of UASection's containing all the sections from the
 //            User-Agent string after being parsed.
 func (p *UserAgent) detectBrowser(sections []UASection) {
+    slen := len(sections)
+
     if sections[0].name == "Opera" {
         p.mozilla = ""
         p.browser.name = "Opera"
         p.browser.version = sections[0].version
         p.browser.engine = "Presto"
-        if len(sections) > 1 {
+        if slen > 1 {
             p.browser.engine_version = sections[1].version
         }
-    } else if len(sections) > 1 {
+    } else if slen > 1 {
         engine := sections[1]
         p.browser.engine = engine.name
         p.browser.engine_version = engine.version
-        if len(sections) > 2 {
+        if slen > 2 {
             p.browser.version = sections[2].version
             if engine.name == "AppleWebKit" {
-                if sections[len(sections) - 1].name == "OPR" {
+                if sections[slen - 1].name == "OPR" {
                     p.browser.name = "Opera"
-                    p.browser.version = sections[len(sections) - 1].version
+                    p.browser.version = sections[slen - 1].version
                 } else if sections[2].name == "Chrome" {
                     p.browser.name = "Chrome"
                 } else {
@@ -50,7 +52,7 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
                 p.browser.name = sections[2].name
             }
         }
-    } else if len(sections) == 1 && len(sections[0].comment) > 1 {
+    } else if slen == 1 && len(sections[0].comment) > 1 {
         comment := sections[0].comment
         if comment[0] == "compatible" && strings.HasPrefix(comment[1], "MSIE") {
             p.browser.engine = "Trident"
