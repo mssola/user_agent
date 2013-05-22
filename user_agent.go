@@ -40,19 +40,25 @@ type UserAgent struct {
 // ua        - The User-Agent string.
 // index     - A reference to the current index on the User-Agent string,
 // delimiter - A byte containing the given delimiter.
+// cat       - Determines whether nested '(' should be ignored or not.
 //
 // Returns an array of bytes containing what has been read.
-func readUntil(ua string, index *int, delimiter byte) []byte {
+func readUntil(ua string, index *int, delimiter byte, cat bool) []byte {
     var buffer []byte
 
     i := *index
+    catalan := 0
     for ; i < len(ua); i = i + 1 {
         if ua[i] == delimiter {
-            *index = i + 1
-            return buffer
-        } else {
-            buffer = append(buffer, ua[i])
+            if catalan == 0 {
+                *index = i + 1
+                return buffer
+            }
+            catalan--
+        } else if cat && ua[i] == '(' {
+            catalan++
         }
+        buffer = append(buffer, ua[i])
     }
     *index = i + 1
     return buffer
@@ -84,12 +90,12 @@ func parseProduct(product []byte) (string, string) {
 // Returns a UASection containing the information that we can extract
 // from the last parsed section.
 func parseSection(ua string, index *int) (section UASection) {
-    buffer := readUntil(ua, index, ' ')
+    buffer := readUntil(ua, index, ' ', false)
 
     section.name, section.version = parseProduct(buffer)
     if *index < len(ua) && ua[*index] == '(' {
         *index++
-        buffer = readUntil(ua, index, ')')
+        buffer = readUntil(ua, index, ')', true)
         section.comment = strings.Split(string(buffer), "; ")
         *index++
     }
