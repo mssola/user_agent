@@ -158,7 +158,7 @@ func (p *UserAgent) detectOS(section UASection) {
             if strings.HasPrefix(section.comment[0], "Windows") {
                 p.platform = "Windows"
                 p.os = normalizeOS(section.comment[0])
-                if len(section.comment) > 1 {
+                if len(section.comment) > 2 {
                     p.localization = section.comment[2]
                 }
             } else {
