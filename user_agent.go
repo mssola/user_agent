@@ -1,4 +1,4 @@
-// Copyright (C) 2012 Miquel Sabaté Solà
+// Copyright (C) 2012-2013 Miquel Sabaté Solà
 // This file is licensed under the MIT license.
 // See the LICENSE file.
 
