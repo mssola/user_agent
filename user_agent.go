@@ -120,8 +120,8 @@ func (p *UserAgent) Parse(ua string) {
 
     if len(sections) > 0 {
         p.mozilla = sections[0].version
-        p.checkBot(sections[0].comment)
         if !p.bot {
+            p.checkBot(sections[0].comment)
             p.detectBrowser(sections)
             p.detectOS(sections[0])
         }
@@ -132,13 +132,11 @@ func (p *UserAgent) Parse(ua string) {
 //
 // comment - A string containing the comment from the first section.
 func (p *UserAgent) checkBot(comment []string) {
-    if !p.bot {
-        reg, _ := regexp.Compile("(?i)bot")
-        for _, v := range comment {
-            if reg.Match([]byte(v)) {
-                p.bot = true
-                return
-            }
+    reg, _ := regexp.Compile("(?i)bot")
+    for _, v := range comment {
+        if reg.Match([]byte(v)) {
+            p.bot = true
+            return
         }
     }
 }
