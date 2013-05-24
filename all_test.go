@@ -49,6 +49,7 @@ var uastrings = []struct {
     {"OperaNested", "Opera/9.80 (Windows NT 5.1; MRA 6.0 (build 5831)) Presto/2.12.388 Version/12.10"},
 
     // Other
+    {"Empty", ""},
     {"Nil", "nil"},
     {"Compatible", "Mozilla/4.0 (compatible)"},
     {"Mozilla", "Mozilla/5.0"},
@@ -112,6 +113,7 @@ var expected = []string{
     "Platform:Windows OS:Windows XP Browser:Opera-9.80 Engine:Presto-2.12.388 Bot:false Mobile:false",
 
     // Other
+    "Bot:false Mobile:false",
     "Browser:nil Bot:true Mobile:true",
     "Mozilla:4.0 Bot:false Mobile:false",
     "Mozilla:5.0 Bot:false Mobile:false",
