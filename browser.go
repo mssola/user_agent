@@ -56,7 +56,7 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
         comment := sections[0].comment
         if comment[0] == "compatible" && strings.HasPrefix(comment[1], "MSIE") {
             p.browser.engine = "Trident"
-            p.browser.version = strings.Split(comment[1], " ")[1]
+            p.browser.version = strings.TrimSpace(comment[1][4:])
             p.browser.name = "Internet Explorer"
         }
     }
