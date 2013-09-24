@@ -53,15 +53,20 @@ func webkit(p *UserAgent, comment []string) {
             p.localization = comment[3]
         }
     } else if p.platform == "Linux" {
+        p.mobile = true
         if p.browser.name == "Safari" {
             p.browser.name = "Android"
         }
         if comment[1] == "U" {
-            p.os = comment[2]
+            if len(comment) > 2 {
+                p.os = comment[2]
+            } else {
+                p.mobile = false
+                p.os = comment[0]
+            }
         } else {
             p.os = comment[1]
         }
-        p.mobile = true
         if len(comment) > 3 {
             p.localization = comment[3]
         }
