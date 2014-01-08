@@ -26,4 +26,4 @@ UserAgent is a Go library that parses HTTP User Agents.
     fmt.Printf("%v\n", version);       // => "23.0.1271.97"
     // ...
 
-Copyright &copy; 2012-2013 Miquel Sabaté Solà, released under the MIT License.
+Copyright &copy; 2012-2014 Miquel Sabaté Solà, released under the MIT License.
