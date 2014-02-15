@@ -192,8 +192,7 @@ func beautify(ua *UserAgent) (s string) {
 // The test suite.
 func TestUserAgent(t *testing.T) {
 	for i, tt := range uastrings {
-		ua := new(UserAgent)
-		ua.Parse(tt.ua)
+		ua := New(tt.ua)
 		got := beautify(ua)
 		if expected[i] != got {
 			t.Errorf("Test %v => %q, expected %q", tt.name, got, expected[i])

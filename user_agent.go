@@ -101,6 +101,18 @@ func parseSection(ua string, index *int) (section UASection) {
 	return section
 }
 
+// Public: parse a User-Agent string and get the resulting UserAgent object.
+//
+// ua - a string containing the User-Agent from the browser (or the bot).
+//
+// Returns an UserAgent object that has been initialized after parsing
+// the given User-Agent string.
+func New(ua string) *UserAgent {
+	o := &UserAgent{}
+	o.Parse(ua)
+	return o
+}
+
 // Public: parse a User-Agent string. After calling this function, the
 // receiver will be setted up with all the information that we've extracted.
 //
