@@ -7,8 +7,7 @@ UserAgent is a Go library that parses HTTP User Agents.
 ## Usage
 
     // ...
-    ua := new(UserAgent);
-    ua.Parse("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11");
+    ua := user_agent.New("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11");
 
     fmt.Printf("%v\n", ua.Mobile());   // => false
     fmt.Printf("%v\n", ua.Bot());      // => false
