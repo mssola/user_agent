@@ -36,6 +36,7 @@ var uastrings = []struct {
 	{"Iceweasel", "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1) Gecko/20061024 Iceweasel/2.0 (Debian-2.0+dfsg-1)"},
 	{"SeaMonkey", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.1.4) Gecko/20091017 SeaMonkey/2.0"},
 	{"AndroidFirefox", "Mozilla/5.0 (Android; Mobile; rv:17.0) Gecko/17.0 Firefox/17.0"},
+	{"AndroidFirefoxTablet", "Mozilla/5.0 (Android; Tablet; rv:26.0) Gecko/26.0 Firefox/26.0"},
 
 	// Opera
 	{"OperaMac", "Opera/9.27 (Macintosh; Intel Mac OS X; U; en)"},
@@ -104,6 +105,7 @@ var expected = []string{
 	"Mozilla:5.0 Platform:X11 OS:Linux i686 Localization:en-US Browser:Iceweasel-2.0 Engine:Gecko-20061024 Bot:false Mobile:false",
 	"Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10.6 Localization:en-US Browser:SeaMonkey-2.0 Engine:Gecko-20091017 Bot:false Mobile:false",
 	"Mozilla:5.0 Platform:Mobile OS:Android Browser:Firefox-17.0 Engine:Gecko-17.0 Bot:false Mobile:true",
+	"Mozilla:5.0 Platform:Tablet OS:Android Browser:Firefox-26.0 Engine:Gecko-26.0 Bot:false Mobile:true",
 
 	// Opera
 	"Platform:Macintosh OS:Intel Mac OS X Localization:en Browser:Opera-9.27 Engine:Presto Bot:false Mobile:false",
