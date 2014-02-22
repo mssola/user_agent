@@ -132,9 +132,13 @@ func (p *UserAgent) Parse(ua string) {
 	if len(sections) > 0 {
 		p.mozilla = sections[0].version
 		if !p.bot {
-			p.checkBot(sections[0].comment)
-			p.detectBrowser(sections)
-			p.detectOS(sections[0])
+			for _, v := range sections {
+				p.checkBot(v.comment)
+			}
+			if !p.bot {
+				p.detectBrowser(sections)
+				p.detectOS(sections[0])
+			}
 		}
 	}
 }
