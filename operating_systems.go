@@ -41,7 +41,9 @@ func webkit(p *UserAgent, comment []string) {
 	if p.platform == "webOS" {
 		p.browser.name = p.platform
 		p.os = "Palm"
-		p.localization = comment[2]
+		if len(comment) > 2 {
+			p.localization = comment[2]
+		}
 		p.mobile = true
 	} else if p.platform == "Symbian" {
 		p.mobile = true
@@ -52,15 +54,17 @@ func webkit(p *UserAgent, comment []string) {
 		if p.browser.name == "Safari" {
 			p.browser.name = "Android"
 		}
-		if comment[1] == "U" {
-			if len(comment) > 2 {
-				p.os = comment[2]
+		if len(comment) > 1 {
+			if comment[1] == "U" {
+				if len(comment) > 2 {
+					p.os = comment[2]
+				} else {
+					p.mobile = false
+					p.os = comment[0]
+				}
 			} else {
-				p.mobile = false
-				p.os = comment[0]
+				p.os = comment[1]
 			}
-		} else {
-			p.os = comment[1]
 		}
 		if len(comment) > 3 {
 			p.localization = comment[3]
@@ -98,7 +102,11 @@ func gecko(p *UserAgent, comment []string) {
 	}
 	if len(comment) > 1 {
 		if comment[1] == "U" {
-			p.os = normalizeOS(comment[2])
+			if len(comment) > 2 {
+				p.os = normalizeOS(comment[2])
+			} else {
+				p.os = normalizeOS(comment[1])
+			}
 		} else {
 			p.os = normalizeOS(comment[1])
 		}
@@ -145,7 +153,12 @@ func (p *UserAgent) detectOS(section UASection) {
 			webkit(p, section.comment)
 		case "Trident":
 			p.platform = "Windows"
-			p.os = normalizeOS(section.comment[2])
+			if len(section.comment) > 2 {
+				p.os = normalizeOS(section.comment[2])
+			} else {
+				p.os = "Windows NT 4.0"
+			}
+			
 			for _, v := range section.comment {
 				if strings.HasPrefix(v, "IEMobile") {
 					p.mobile = true
@@ -166,7 +179,11 @@ func (p *UserAgent) detectOS(section UASection) {
 					p.mobile = true
 				}
 				p.platform = section.comment[0]
-				p.os = section.comment[1]
+				if len(section.comment) > 1 {
+					p.os = section.comment[1]
+				} else {
+					p.os = section.comment[0]
+				}
 				if len(section.comment) > 3 {
 					p.localization = section.comment[3]
 				}
