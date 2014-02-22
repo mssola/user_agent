@@ -97,9 +97,6 @@ func webkit(p *UserAgent, comment []string) {
 // p       - a reference to the current UserAgent.
 // comment - a slice of strings containing the comment.
 func gecko(p *UserAgent, comment []string) {
-	if p.platform == "Android" {
-		p.mobile = true
-	}
 	if len(comment) > 1 {
 		if comment[1] == "U" {
 			if len(comment) > 2 {
@@ -108,7 +105,12 @@ func gecko(p *UserAgent, comment []string) {
 				p.os = normalizeOS(comment[1])
 			}
 		} else {
-			p.os = normalizeOS(comment[1])
+			if p.platform == "Android" {
+				p.mobile = true
+				p.platform, p.os = normalizeOS(comment[1]), p.platform
+			} else {
+				p.os = normalizeOS(comment[1])
+			}
 		}
 		if len(comment) > 3 {
 			p.localization = comment[3]
@@ -158,7 +160,7 @@ func (p *UserAgent) detectOS(section UASection) {
 			} else {
 				p.os = "Windows NT 4.0"
 			}
-			
+
 			for _, v := range section.comment {
 				if strings.HasPrefix(v, "IEMobile") {
 					p.mobile = true

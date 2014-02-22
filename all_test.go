@@ -103,7 +103,7 @@ var expected = []string{
 	"Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X Localization:en Browser:Camino-1.6 Engine:Gecko-20080409 Bot:false Mobile:false",
 	"Mozilla:5.0 Platform:X11 OS:Linux i686 Localization:en-US Browser:Iceweasel-2.0 Engine:Gecko-20061024 Bot:false Mobile:false",
 	"Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10.6 Localization:en-US Browser:SeaMonkey-2.0 Engine:Gecko-20091017 Bot:false Mobile:false",
-	"Mozilla:5.0 Platform:Android OS:Mobile Browser:Firefox-17.0 Engine:Gecko-17.0 Bot:false Mobile:true",
+	"Mozilla:5.0 Platform:Mobile OS:Android Browser:Firefox-17.0 Engine:Gecko-17.0 Bot:false Mobile:true",
 
 	// Opera
 	"Platform:Macintosh OS:Intel Mac OS X Localization:en Browser:Opera-9.27 Engine:Presto Bot:false Mobile:false",
