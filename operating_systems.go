@@ -11,18 +11,28 @@ import "strings"
 //
 // Returns a string containing the normalized name for the Operating System.
 func normalizeOS(name string) string {
-	windows := map[string]string{
-		"Windows NT 6.3":  "Windows 8.1",
-		"Windows NT 6.2":  "Windows 8",
-		"Windows NT 6.1":  "Windows 7",
-		"Windows NT 6.0":  "Windows Vista",
-		"Windows NT 5.2":  "Windows XP x64 Edition",
-		"Windows NT 5.1":  "Windows XP",
-		"Windows NT 5.01": "Windows 2000, Service Pack 1 (SP1)",
-		"Windows NT 5.0":  "Windows 2000",
+	sp := strings.Split(name, " ")
+	if len(sp) < 3 {
+		return name
 	}
-	if val, ok := windows[name]; ok {
-		return val
+
+	switch sp[2] {
+	case "5.0":
+		return "Windows 2000"
+	case "5.01":
+		return "Windows 2000, Service Pack 1 (SP1)"
+	case "5.1":
+		return "Windows XP"
+	case "5.2":
+		return "Windows XP x64 Edition"
+	case "6.0":
+		return "Windows Vista"
+	case "6.1":
+		return "Windows 7"
+	case "6.2":
+		return "Windows 8"
+	case "6.3":
+		return "Windows 8.1"
 	}
 	return name
 }
