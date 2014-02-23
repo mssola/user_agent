@@ -120,6 +120,61 @@ func gecko(p *UserAgent, comment []string) {
 	}
 }
 
+// Internal: guess the OS, the localization and if this is a mobile device
+// for Internet Explorer.
+//
+// The first argument p is a reference to the current UserAgent and the second
+// argument is a slice of strings containing the comment.
+func trident(p *UserAgent, comment []string) {
+	// Internet Explorer only runs on Windows.
+	p.platform = "Windows"
+
+	// The OS can be set before to handle a new case in IE11.
+	if p.os == "" {
+		if len(comment) > 2 {
+			p.os = normalizeOS(comment[2])
+		} else {
+			p.os = "Windows NT 4.0"
+		}
+	}
+
+	// Last but not least, let's detect if it comes from a mobile device.
+	for _, v := range comment {
+		if strings.HasPrefix(v, "IEMobile") {
+			p.mobile = true
+			return
+		}
+	}
+}
+
+// Internal: guess the OS, the localization and if this is a mobile device
+// for Opera.
+//
+// The first argument p is a reference to the current UserAgent and the second
+// argument is a slice of strings containing the comment.
+func opera(p *UserAgent, comment []string) {
+	if strings.HasPrefix(comment[0], "Windows") {
+		p.platform = "Windows"
+		p.os = normalizeOS(comment[0])
+		if len(comment) > 2 {
+			p.localization = comment[2]
+		}
+	} else {
+		if strings.HasPrefix(comment[0], "Android") {
+			p.mobile = true
+		}
+		p.platform = comment[0]
+		if len(comment) > 1 {
+			p.os = comment[1]
+			if len(comment) > 3 {
+				p.localization = comment[3]
+			}
+		} else {
+			p.os = comment[0]
+		}
+	}
+}
+
 // Internal: given the comment of the first section of the UserAgent string,
 // get the platform.
 //
@@ -159,45 +214,11 @@ func (p *UserAgent) detectOS(section UASection) {
 		case "AppleWebKit":
 			webkit(p, section.comment)
 		case "Trident":
-			p.platform = "Windows"
-			// The OS can be set before to handle a new case in IE11.
-			if p.os == "" {
-				if len(section.comment) > 2 {
-					p.os = normalizeOS(section.comment[2])
-				} else {
-					p.os = "Windows NT 4.0"
-				}
-			}
-
-			for _, v := range section.comment {
-				if strings.HasPrefix(v, "IEMobile") {
-					p.mobile = true
-					return
-				}
-			}
+			trident(p, section.comment)
 		}
 	} else if section.name == "Opera" {
 		if len(section.comment) > 0 {
-			if strings.HasPrefix(section.comment[0], "Windows") {
-				p.platform = "Windows"
-				p.os = normalizeOS(section.comment[0])
-				if len(section.comment) > 2 {
-					p.localization = section.comment[2]
-				}
-			} else {
-				if strings.HasPrefix(section.comment[0], "Android") {
-					p.mobile = true
-				}
-				p.platform = section.comment[0]
-				if len(section.comment) > 1 {
-					p.os = section.comment[1]
-				} else {
-					p.os = section.comment[0]
-				}
-				if len(section.comment) > 3 {
-					p.localization = section.comment[3]
-				}
-			}
+			opera(p, section.comment)
 		}
 	} else {
 		// At this point, we assume that this is a bot.
