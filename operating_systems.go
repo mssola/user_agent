@@ -20,10 +20,6 @@ func normalizeOS(name string) string {
 		"Windows NT 5.1":  "Windows XP",
 		"Windows NT 5.01": "Windows 2000, Service Pack 1 (SP1)",
 		"Windows NT 5.0":  "Windows 2000",
-		"Windows NT 4.0":  "Windows NT 4.0",
-		"Windows 98":      "Windows 98",
-		"Windows 95":      "Windows 95",
-		"Windows CE":      "Windows CE",
 	}
 	if val, ok := windows[name]; ok {
 		return val
