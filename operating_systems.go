@@ -12,6 +12,7 @@ import "strings"
 // Returns a string containing the normalized name for the Operating System.
 func normalizeOS(name string) string {
 	windows := map[string]string{
+		"Windows NT 6.3":  "Windows 8.1",
 		"Windows NT 6.2":  "Windows 8",
 		"Windows NT 6.1":  "Windows 7",
 		"Windows NT 6.0":  "Windows Vista",
@@ -144,7 +145,14 @@ func getPlatform(comment []string) string {
 // Internal: detect some properties of the OS from the given section.
 func (p *UserAgent) detectOS(section UASection) {
 	if section.name == "Mozilla" {
+		// Get the platform here. Be aware that IE11 provides a new format
+		// that is not backwards-compatible with previous versions of IE.
 		p.platform = getPlatform(section.comment)
+		if p.platform == "Windows" && len(section.comment) > 0 {
+			p.os = normalizeOS(section.comment[0])
+		}
+
+		// And finally get the OS depending on the engine.
 		switch p.browser.engine {
 		case "Gecko":
 			gecko(p, section.comment)
@@ -152,10 +160,13 @@ func (p *UserAgent) detectOS(section UASection) {
 			webkit(p, section.comment)
 		case "Trident":
 			p.platform = "Windows"
-			if len(section.comment) > 2 {
-				p.os = normalizeOS(section.comment[2])
-			} else {
-				p.os = "Windows NT 4.0"
+			// The OS can be set before to handle a new case in IE11.
+			if p.os == "" {
+				if len(section.comment) > 2 {
+					p.os = normalizeOS(section.comment[2])
+				} else {
+					p.os = "Windows NT 4.0"
+				}
 			}
 
 			for _, v := range section.comment {
