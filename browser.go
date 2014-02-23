@@ -18,8 +18,8 @@ type Browser struct {
 // Internal: extract all the information that we can get from the User-Agent
 // string about the browser and update the receiver with this information.
 //
-// sections - a slice of UASection's containing all the sections from the
-//            User-Agent string after being parsed.
+// The function receives just one argument "sections", that contains the
+// sections from the User-Agent string after being parsed.
 func (p *UserAgent) detectBrowser(sections []UASection) {
 	slen := len(sections)
 
@@ -61,17 +61,17 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
 }
 
 // Public: get the info from the browser's rendering engine.
-// Returns:
-//      - a string containing the name of the Engine.
-//      - a string containing the version of the Engine.
+//
+// Returns two strings. The first string is the name of the engine and the
+// second one is the version of the engine.
 func (p *UserAgent) Engine() (string, string) {
 	return p.browser.engine, p.browser.engine_version
 }
 
 // Public: get the info from the browser itself.
-// Returns:
-//      - a string containing the name of the browser.
-//      - a string containing the version of the browser.
+//
+// Returns two strings. The first string is the name of the browser and the
+// second one is the version of the browser.
 func (p *UserAgent) Browser() (string, string) {
 	return p.browser.name, p.browser.version
 }

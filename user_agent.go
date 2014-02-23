@@ -36,10 +36,10 @@ type UserAgent struct {
 // Internal: read from the given string until the given delimiter or the
 // end of the string have been reached.
 //
-// ua        - The User-Agent string.
-// index     - A reference to the current index on the User-Agent string,
-// delimiter - A byte containing the given delimiter.
-// cat       - Determines whether nested '(' should be ignored or not.
+// The first argument is the user agent string being parsed. The second
+// argument is a reference pointing to the current index of the user agent
+// string. The delimiter argument specifies which character is the delimiter
+// and the cat argument determines whether nested '(' should be ignored or not.
 //
 // Returns an array of bytes containing what has been read.
 func readUntil(ua string, index *int, delimiter byte, cat bool) []byte {
@@ -63,14 +63,11 @@ func readUntil(ua string, index *int, delimiter byte, cat bool) []byte {
 	return buffer
 }
 
-// Internal: parse the product, that is, just a name or a string
+// Internal: parse the given product, that is, just a name or a string
 // formatted as Name/Version.
 //
-// product - a slice of bytes containing the product.
-//
-// Returns:
-//     - a string containing the name of the product.
-//     - a string containing the version of the product.
+// It returns two strings. The first string is the name of the product and the
+// second string contains the version of the product.
 func parseProduct(product []byte) (string, string) {
 	prod := strings.Split(string(product), "/")
 	if len(prod) == 2 {
@@ -83,10 +80,11 @@ func parseProduct(product []byte) (string, string) {
 // follows "Name/Version (comment)". Both, the comment and the version
 // are optional.
 //
-// ua    - the UserAgent string.
-// index - a reference to the index we're using inside the ua string.
+// The first argument is the user agent string being parsed. The second
+// argument is a reference pointing to the current index of the user agent
+// string.
 //
-// Returns a UASection containing the information that we can extract
+// Returns a UASection containing the information that we could extract
 // from the last parsed section.
 func parseSection(ua string, index *int) (section UASection) {
 	buffer := readUntil(ua, index, ' ', false)
@@ -101,9 +99,8 @@ func parseSection(ua string, index *int) (section UASection) {
 	return section
 }
 
-// Public: parse a User-Agent string and get the resulting UserAgent object.
-//
-// ua - a string containing the User-Agent from the browser (or the bot).
+// Public: parse the given User-Agent string and get the resulting UserAgent
+// object.
 //
 // Returns an UserAgent object that has been initialized after parsing
 // the given User-Agent string.
@@ -113,10 +110,8 @@ func New(ua string) *UserAgent {
 	return o
 }
 
-// Public: parse a User-Agent string. After calling this function, the
+// Public: parse the given User-Agent string. After calling this function, the
 // receiver will be setted up with all the information that we've extracted.
-//
-// ua - a string containing the User-Agent from the browser (or the bot).
 func (p *UserAgent) Parse(ua string) {
 	var sections []UASection
 
@@ -144,8 +139,6 @@ func (p *UserAgent) Parse(ua string) {
 }
 
 // Internal: check if we're dealing with a Bot.
-//
-// comment - A string containing the comment from the first section.
 func (p *UserAgent) checkBot(comment []string) {
 	reg, _ := regexp.Compile("(?i)bot")
 	for _, v := range comment {

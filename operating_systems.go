@@ -9,8 +9,6 @@ import "strings"
 // Internal: normalize the name of the operating system. By now, this just
 // affects to Windows.
 //
-// name - The original name of the Operating System.
-//
 // Returns a string containing the normalized name for the Operating System.
 func normalizeOS(name string) string {
 	windows := map[string]string{
@@ -35,8 +33,8 @@ func normalizeOS(name string) string {
 // Internal: guess the OS, the localization and if this is a mobile device
 // for a Webkit-powered browser.
 //
-// p       - a reference to the current UserAgent.
-// comment - a slice of strings containing the comment.
+// The first argument p is a reference to the current UserAgent and the second
+// argument is a slice of strings containing the comment.
 func webkit(p *UserAgent, comment []string) {
 	if p.platform == "webOS" {
 		p.browser.name = p.platform
@@ -94,8 +92,8 @@ func webkit(p *UserAgent, comment []string) {
 // Internal: guess the OS, the localization and if this is a mobile device
 // for a Gecko-powered browser.
 //
-// p       - a reference to the current UserAgent.
-// comment - a slice of strings containing the comment.
+// The first argument p is a reference to the current UserAgent and the second
+// argument is a slice of strings containing the comment.
 func gecko(p *UserAgent, comment []string) {
 	if len(comment) > 1 {
 		if comment[1] == "U" {
@@ -124,8 +122,6 @@ func gecko(p *UserAgent, comment []string) {
 // Internal: given the comment of the first section of the UserAgent string,
 // get the platform.
 //
-// comment - a slice of strings containing the comment itself.
-//
 // Returns a string that is the platform.
 func getPlatform(comment []string) string {
 	if len(comment) > 0 {
@@ -145,9 +141,7 @@ func getPlatform(comment []string) string {
 	return ""
 }
 
-// Internal: detect some properties of the OS.
-//
-// section - an UASection containing the first section of the User-Agent.
+// Internal: detect some properties of the OS from the given section.
 func (p *UserAgent) detectOS(section UASection) {
 	if section.name == "Mozilla" {
 		p.platform = getPlatform(section.comment)
