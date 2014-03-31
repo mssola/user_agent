@@ -28,6 +28,7 @@ var uastrings = []struct {
 	{"IE6", "Mozilla/4.0 (compatible; MSIE6.0; Windows NT 5.0; .NET CLR 1.1.4322)"},
 	{"IE11Win81", "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko"},
 	{"IE11Win7", "Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko"},
+	{"IE11b32Win7b64", "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko"},
 	{"IE11Compatibility", "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.3; Trident/7.0)"},
 
 	// Gecko
@@ -101,6 +102,7 @@ var expected = []string{
 	"Mozilla:4.0 Platform:Windows OS:Windows Phone OS 7.0 Browser:Internet Explorer-7.0 Engine:Trident Bot:false Mobile:true",
 	"Mozilla:4.0 Platform:Windows OS:Windows 2000 Browser:Internet Explorer-6.0 Engine:Trident Bot:false Mobile:false",
 	"Mozilla:5.0 Platform:Windows OS:Windows 8.1 Browser:Internet Explorer-11.0 Engine:Trident Bot:false Mobile:false",
+	"Mozilla:5.0 Platform:Windows OS:Windows 7 Browser:Internet Explorer-11.0 Engine:Trident Bot:false Mobile:false",
 	"Mozilla:5.0 Platform:Windows OS:Windows 7 Browser:Internet Explorer-11.0 Engine:Trident Bot:false Mobile:false",
 	"Mozilla:4.0 Platform:Windows OS:Windows 8.1 Browser:Internet Explorer-7.0 Engine:Trident Bot:false Mobile:false",
 

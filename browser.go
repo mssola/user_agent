@@ -52,6 +52,10 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
 				// This is the new user agent from Internet Explorer 11.
 				p.browser.engine = "Trident"
 				vers := strings.Split(sections[0].comment[2], ":")
+				// Special case for Windows-On-Windows 64-bit
+				if sections[0].comment[1] == "WOW64" {
+					vers = strings.Split(sections[0].comment[3], ":")
+				}
 				p.browser.name = "Internet Explorer"
 				p.browser.version = vers[1]
 			}
