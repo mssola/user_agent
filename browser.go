@@ -63,7 +63,7 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
 						return
 					}
 				}
-				p.browser.version = "UNKNWON"
+				p.browser.version = ""
 			}
 		}
 	} else if slen == 1 && len(sections[0].comment) > 1 {
