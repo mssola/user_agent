@@ -59,7 +59,7 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
 				for _, c := range sections[0].comment {
 					version := reg.FindStringSubmatch(c)
 					if len(version) > 0 {
-						p.browser.version = version[2]
+						p.browser.version = version[1]
 						return
 					}
 				}
