@@ -4,7 +4,10 @@
 
 package user_agent
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
 
 // A struct containing all the information that we might be
 // interested from the browser.
@@ -51,13 +54,16 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
 			} else if engine.name == "like" && sections[2].name == "Gecko" {
 				// This is the new user agent from Internet Explorer 11.
 				p.browser.engine = "Trident"
-				vers := strings.Split(sections[0].comment[2], ":")
-				// Special case for Windows-On-Windows 64-bit
-				if sections[0].comment[1] == "WOW64" {
-					vers = strings.Split(sections[0].comment[3], ":")
-				}
 				p.browser.name = "Internet Explorer"
-				p.browser.version = vers[1]
+				reg, _ := regexp.Compile("^rv:(.+)$")
+				for _, c := range sections[0].comment {
+					version := reg.FindStringSubmatch(c)
+					if len(version) > 0 {
+						p.browser.version = version[1]
+						return
+					}
+				}
+				p.browser.version = ""
 			}
 		}
 	} else if slen == 1 && len(sections[0].comment) > 1 {
