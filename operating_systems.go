@@ -11,8 +11,8 @@ import "strings"
 //
 // Returns a string containing the normalized name for the Operating System.
 func normalizeOS(name string) string {
-	sp := strings.Split(name, " ")
-	if len(sp) < 3 {
+	sp := strings.SplitN(name, " ", 3)
+	if len(sp) != 3 {
 		return name
 	}
 

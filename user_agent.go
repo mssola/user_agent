@@ -69,7 +69,7 @@ func readUntil(ua string, index *int, delimiter byte, cat bool) []byte {
 // It returns two strings. The first string is the name of the product and the
 // second string contains the version of the product.
 func parseProduct(product []byte) (string, string) {
-	prod := strings.Split(string(product), "/")
+	prod := strings.SplitN(string(product), "/", 2)
 	if len(prod) == 2 {
 		return prod[0], prod[1]
 	}
