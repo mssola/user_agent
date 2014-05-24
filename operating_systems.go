@@ -117,7 +117,9 @@ func gecko(p *UserAgent, comment []string) {
 				p.mobile = true
 				p.os = "FirefoxOS"
 			} else {
-				p.os = normalizeOS(comment[1])
+				if p.os == "" {
+					p.os = normalizeOS(comment[1])
+				}
 			}
 		}
 		if len(comment) > 3 {
