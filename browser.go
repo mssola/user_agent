@@ -71,6 +71,9 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
 		if comment[0] == "compatible" && strings.HasPrefix(comment[1], "MSIE") {
 			p.browser.engine = "Trident"
 			p.browser.name = "Internet Explorer"
+			// The MSIE version may be reported as the compatibility version.
+			// For IE 8 through 10, the Trident token is more accurate.
+			// http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx#VerToken
 			for _, v := range comment {
 				if strings.HasPrefix(v, "Trident/") {
 					switch v[8:] {
@@ -84,6 +87,7 @@ func (p *UserAgent) detectBrowser(sections []UASection) {
 					break
 				}
 			}
+			// If the Trident token is not provided, fall back to MSIE token.
 			if p.browser.version == "" {
 				p.browser.version = strings.TrimSpace(comment[1][4:])
 			}
