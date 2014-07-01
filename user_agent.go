@@ -140,12 +140,18 @@ func (p *UserAgent) Parse(ua string) {
 
 // Internal: check if we're dealing with a Bot.
 func (p *UserAgent) checkBot(comment []string) {
+	// Regular bots (Google, Bing, ...).
 	reg, _ := regexp.Compile("(?i)bot")
 	for _, v := range comment {
 		if reg.Match([]byte(v)) {
 			p.bot = true
 			return
 		}
+	}
+
+	// Special case for the Baidu bot.
+	if len(comment) > 1 && strings.HasPrefix(comment[1], "Baidu") {
+		p.bot = true
 	}
 }
 
