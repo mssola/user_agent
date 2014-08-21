@@ -44,7 +44,7 @@ func normalizeOS(name string) string {
 // argument is a slice of strings containing the comment.
 func webkit(p *UserAgent, comment []string) {
 	if p.platform == "webOS" {
-		p.browser.name = p.platform
+		p.browser.Name = p.platform
 		p.os = "Palm"
 		if len(comment) > 2 {
 			p.localization = comment[2]
@@ -52,12 +52,12 @@ func webkit(p *UserAgent, comment []string) {
 		p.mobile = true
 	} else if p.platform == "Symbian" {
 		p.mobile = true
-		p.browser.name = p.platform
+		p.browser.Name = p.platform
 		p.os = comment[0]
 	} else if p.platform == "Linux" {
 		p.mobile = true
-		if p.browser.name == "Safari" {
-			p.browser.name = "Android"
+		if p.browser.Name == "Safari" {
+			p.browser.Name = "Android"
 		}
 		if len(comment) > 1 {
 			if comment[1] == "U" {
@@ -88,7 +88,7 @@ func webkit(p *UserAgent, comment []string) {
 			p.os = normalizeOS(comment[2])
 		}
 		if p.platform == "BlackBerry" {
-			p.browser.name = p.platform
+			p.browser.Name = p.platform
 			if p.os == "Touch" {
 				p.os = p.platform
 			}
@@ -214,7 +214,7 @@ func (p *UserAgent) detectOS(s section) {
 		}
 
 		// And finally get the OS depending on the engine.
-		switch p.browser.engine {
+		switch p.browser.Engine {
 		case "Gecko":
 			gecko(p, s.comment)
 		case "AppleWebKit":
@@ -231,8 +231,8 @@ func (p *UserAgent) detectOS(s section) {
 		p.bot = true
 		p.mobile = true
 		p.mozilla = ""
-		p.browser.name = s.name
-		p.browser.version = s.version
+		p.browser.Name = s.name
+		p.browser.Version = s.version
 	}
 }
 

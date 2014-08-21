@@ -12,10 +12,17 @@ import (
 // A struct containing all the information that we might be
 // interested from the browser.
 type Browser struct {
-	engine         string
-	engine_version string
-	name           string
-	version        string
+	// The name of the browser's engine.
+	Engine string
+
+	// The version of the browser's engine.
+	EngineVersion string
+
+	// The name of the browser.
+	Name string
+
+	// The version of the browser.
+	Version string
 }
 
 // Extract all the information that we can get from the User-Agent string
@@ -28,49 +35,49 @@ func (p *UserAgent) detectBrowser(sections []section) {
 
 	if sections[0].name == "Opera" {
 		p.mozilla = ""
-		p.browser.name = "Opera"
-		p.browser.version = sections[0].version
-		p.browser.engine = "Presto"
+		p.browser.Name = "Opera"
+		p.browser.Version = sections[0].version
+		p.browser.Engine = "Presto"
 		if slen > 1 {
-			p.browser.engine_version = sections[1].version
+			p.browser.EngineVersion = sections[1].version
 		}
 	} else if slen > 1 {
 		engine := sections[1]
-		p.browser.engine = engine.name
-		p.browser.engine_version = engine.version
+		p.browser.Engine = engine.name
+		p.browser.EngineVersion = engine.version
 		if slen > 2 {
-			p.browser.version = sections[2].version
+			p.browser.Version = sections[2].version
 			if engine.name == "AppleWebKit" {
 				if sections[slen-1].name == "OPR" {
-					p.browser.name = "Opera"
-					p.browser.version = sections[slen-1].version
+					p.browser.Name = "Opera"
+					p.browser.Version = sections[slen-1].version
 				} else if sections[2].name == "Chrome" {
-					p.browser.name = "Chrome"
+					p.browser.Name = "Chrome"
 				} else {
-					p.browser.name = "Safari"
+					p.browser.Name = "Safari"
 				}
 			} else if engine.name == "Gecko" {
-				p.browser.name = sections[2].name
+				p.browser.Name = sections[2].name
 			} else if engine.name == "like" && sections[2].name == "Gecko" {
 				// This is the new user agent from Internet Explorer 11.
-				p.browser.engine = "Trident"
-				p.browser.name = "Internet Explorer"
+				p.browser.Engine = "Trident"
+				p.browser.Name = "Internet Explorer"
 				reg, _ := regexp.Compile("^rv:(.+)$")
 				for _, c := range sections[0].comment {
 					version := reg.FindStringSubmatch(c)
 					if len(version) > 0 {
-						p.browser.version = version[1]
+						p.browser.Version = version[1]
 						return
 					}
 				}
-				p.browser.version = ""
+				p.browser.Version = ""
 			}
 		}
 	} else if slen == 1 && len(sections[0].comment) > 1 {
 		comment := sections[0].comment
 		if comment[0] == "compatible" && strings.HasPrefix(comment[1], "MSIE") {
-			p.browser.engine = "Trident"
-			p.browser.name = "Internet Explorer"
+			p.browser.Engine = "Trident"
+			p.browser.Name = "Internet Explorer"
 			// The MSIE version may be reported as the compatibility version.
 			// For IE 8 through 10, the Trident token is more accurate.
 			// http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx#VerToken
@@ -78,18 +85,18 @@ func (p *UserAgent) detectBrowser(sections []section) {
 				if strings.HasPrefix(v, "Trident/") {
 					switch v[8:] {
 					case "4.0":
-						p.browser.version = "8.0"
+						p.browser.Version = "8.0"
 					case "5.0":
-						p.browser.version = "9.0"
+						p.browser.Version = "9.0"
 					case "6.0":
-						p.browser.version = "10.0"
+						p.browser.Version = "10.0"
 					}
 					break
 				}
 			}
 			// If the Trident token is not provided, fall back to MSIE token.
-			if p.browser.version == "" {
-				p.browser.version = strings.TrimSpace(comment[1][4:])
+			if p.browser.Version == "" {
+				p.browser.Version = strings.TrimSpace(comment[1][4:])
 			}
 		}
 	}
@@ -98,11 +105,11 @@ func (p *UserAgent) detectBrowser(sections []section) {
 // Returns two strings. The first string is the name of the engine and the
 // second one is the version of the engine.
 func (p *UserAgent) Engine() (string, string) {
-	return p.browser.engine, p.browser.engine_version
+	return p.browser.Engine, p.browser.EngineVersion
 }
 
 // Returns two strings. The first string is the name of the browser and the
 // second one is the version of the browser.
 func (p *UserAgent) Browser() (string, string) {
-	return p.browser.name, p.browser.version
+	return p.browser.Name, p.browser.Version
 }
