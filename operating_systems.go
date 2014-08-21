@@ -206,35 +206,35 @@ func getPlatform(comment []string) string {
 }
 
 // Internal: detect some properties of the OS from the given section.
-func (p *UserAgent) detectOS(section UASection) {
-	if section.name == "Mozilla" {
+func (p *UserAgent) detectOS(s section) {
+	if s.name == "Mozilla" {
 		// Get the platform here. Be aware that IE11 provides a new format
 		// that is not backwards-compatible with previous versions of IE.
-		p.platform = getPlatform(section.comment)
-		if p.platform == "Windows" && len(section.comment) > 0 {
-			p.os = normalizeOS(section.comment[0])
+		p.platform = getPlatform(s.comment)
+		if p.platform == "Windows" && len(s.comment) > 0 {
+			p.os = normalizeOS(s.comment[0])
 		}
 
 		// And finally get the OS depending on the engine.
 		switch p.browser.engine {
 		case "Gecko":
-			gecko(p, section.comment)
+			gecko(p, s.comment)
 		case "AppleWebKit":
-			webkit(p, section.comment)
+			webkit(p, s.comment)
 		case "Trident":
-			trident(p, section.comment)
+			trident(p, s.comment)
 		}
-	} else if section.name == "Opera" {
-		if len(section.comment) > 0 {
-			opera(p, section.comment)
+	} else if s.name == "Opera" {
+		if len(s.comment) > 0 {
+			opera(p, s.comment)
 		}
 	} else {
 		// At this point, we assume that this is a bot.
 		p.bot = true
 		p.mobile = true
 		p.mozilla = ""
-		p.browser.name = section.name
-		p.browser.version = section.version
+		p.browser.name = s.name
+		p.browser.version = s.version
 	}
 }
 

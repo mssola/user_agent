@@ -13,9 +13,9 @@ import (
 	"strings"
 )
 
-// A "section" of the User-Agent string. A section contains the name of the
-// product, its version and an optional comment.
-type UASection struct {
+// A section contains the name of the product, its version and
+// an optional comment.
+type section struct {
 	name    string
 	version string
 	comment []string
@@ -86,17 +86,17 @@ func parseProduct(product []byte) (string, string) {
 //
 // Returns a UASection containing the information that we could extract
 // from the last parsed section.
-func parseSection(ua string, index *int) (section UASection) {
+func parseSection(ua string, index *int) (s section) {
 	buffer := readUntil(ua, index, ' ', false)
 
-	section.name, section.version = parseProduct(buffer)
+	s.name, s.version = parseProduct(buffer)
 	if *index < len(ua) && ua[*index] == '(' {
 		*index++
 		buffer = readUntil(ua, index, ')', true)
-		section.comment = strings.Split(string(buffer), "; ")
+		s.comment = strings.Split(string(buffer), "; ")
 		*index++
 	}
-	return section
+	return s
 }
 
 // Public: parse the given User-Agent string and get the resulting UserAgent
@@ -113,7 +113,7 @@ func New(ua string) *UserAgent {
 // Public: parse the given User-Agent string. After calling this function, the
 // receiver will be setted up with all the information that we've extracted.
 func (p *UserAgent) Parse(ua string) {
-	var sections []UASection
+	var sections []section
 
 	p.mobile = false
 	for index, limit := 0, len(ua); index < limit; {

@@ -23,7 +23,7 @@ type Browser struct {
 //
 // The function receives just one argument "sections", that contains the
 // sections from the User-Agent string after being parsed.
-func (p *UserAgent) detectBrowser(sections []UASection) {
+func (p *UserAgent) detectBrowser(sections []section) {
 	slen := len(sections)
 
 	if sections[0].name == "Opera" {
