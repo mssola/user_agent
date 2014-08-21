@@ -6,7 +6,7 @@ package user_agent
 
 import "strings"
 
-// Internal: normalize the name of the operating system. By now, this just
+// Normalize the name of the operating system. By now, this just
 // affects to Windows.
 //
 // Returns a string containing the normalized name for the Operating System.
@@ -37,8 +37,8 @@ func normalizeOS(name string) string {
 	return name
 }
 
-// Internal: guess the OS, the localization and if this is a mobile device
-// for a Webkit-powered browser.
+// Guess the OS, the localization and if this is a mobile device for a
+// Webkit-powered browser.
 //
 // The first argument p is a reference to the current UserAgent and the second
 // argument is a slice of strings containing the comment.
@@ -96,7 +96,7 @@ func webkit(p *UserAgent, comment []string) {
 	}
 }
 
-// Internal: guess the OS, the localization and if this is a mobile device
+// Guess the OS, the localization and if this is a mobile device
 // for a Gecko-powered browser.
 //
 // The first argument p is a reference to the current UserAgent and the second
@@ -128,7 +128,7 @@ func gecko(p *UserAgent, comment []string) {
 	}
 }
 
-// Internal: guess the OS, the localization and if this is a mobile device
+// Guess the OS, the localization and if this is a mobile device
 // for Internet Explorer.
 //
 // The first argument p is a reference to the current UserAgent and the second
@@ -155,7 +155,7 @@ func trident(p *UserAgent, comment []string) {
 	}
 }
 
-// Internal: guess the OS, the localization and if this is a mobile device
+// Guess the OS, the localization and if this is a mobile device
 // for Opera.
 //
 // The first argument p is a reference to the current UserAgent and the second
@@ -183,10 +183,8 @@ func opera(p *UserAgent, comment []string) {
 	}
 }
 
-// Internal: given the comment of the first section of the UserAgent string,
+// Given the comment of the first section of the UserAgent string,
 // get the platform.
-//
-// Returns a string that is the platform.
 func getPlatform(comment []string) string {
 	if len(comment) > 0 {
 		if comment[0] != "compatible" {
@@ -205,7 +203,7 @@ func getPlatform(comment []string) string {
 	return ""
 }
 
-// Internal: detect some properties of the OS from the given section.
+// Detect some properties of the OS from the given section.
 func (p *UserAgent) detectOS(s section) {
 	if s.name == "Mozilla" {
 		// Get the platform here. Be aware that IE11 provides a new format

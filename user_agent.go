@@ -33,7 +33,7 @@ type UserAgent struct {
 	mobile       bool
 }
 
-// Internal: read from the given string until the given delimiter or the
+// Read from the given string until the given delimiter or the
 // end of the string have been reached.
 //
 // The first argument is the user agent string being parsed. The second
@@ -63,7 +63,7 @@ func readUntil(ua string, index *int, delimiter byte, cat bool) []byte {
 	return buffer
 }
 
-// Internal: parse the given product, that is, just a name or a string
+// Parse the given product, that is, just a name or a string
 // formatted as Name/Version.
 //
 // It returns two strings. The first string is the name of the product and the
@@ -76,15 +76,14 @@ func parseProduct(product []byte) (string, string) {
 	return string(product), ""
 }
 
-// Internal: parse a section. A section is typically formatted as
-// follows "Name/Version (comment)". Both, the comment and the version
-// are optional.
+// Parse a section. A section is typically formatted as follows
+// "Name/Version (comment)". Both, the comment and the version are optional.
 //
 // The first argument is the user agent string being parsed. The second
 // argument is a reference pointing to the current index of the user agent
 // string.
 //
-// Returns a UASection containing the information that we could extract
+// Returns a section containing the information that we could extract
 // from the last parsed section.
 func parseSection(ua string, index *int) (s section) {
 	buffer := readUntil(ua, index, ' ', false)
@@ -99,8 +98,7 @@ func parseSection(ua string, index *int) (s section) {
 	return s
 }
 
-// Public: parse the given User-Agent string and get the resulting UserAgent
-// object.
+// Parse the given User-Agent string and get the resulting UserAgent object.
 //
 // Returns an UserAgent object that has been initialized after parsing
 // the given User-Agent string.
@@ -110,7 +108,7 @@ func New(ua string) *UserAgent {
 	return o
 }
 
-// Public: parse the given User-Agent string. After calling this function, the
+// Parse the given User-Agent string. After calling this function, the
 // receiver will be setted up with all the information that we've extracted.
 func (p *UserAgent) Parse(ua string) {
 	var sections []section
@@ -138,7 +136,7 @@ func (p *UserAgent) Parse(ua string) {
 	}
 }
 
-// Internal: check if we're dealing with a Bot.
+// Check if we're dealing with a Bot.
 func (p *UserAgent) checkBot(comment []string) {
 	// Regular bots (Google, Bing, ...).
 	reg, _ := regexp.Compile("(?i)bot")
@@ -155,9 +153,8 @@ func (p *UserAgent) checkBot(comment []string) {
 	}
 }
 
-// Public: get the mozilla version (it's how the User Agent string begins:
+// Returns the mozilla version (it's how the User Agent string begins:
 // "Mozilla/5.0 ...", unless we're dealing with Opera, of course).
-// Returns a string containing the mozilla version.
 func (p *UserAgent) Mozilla() string {
 	return p.mozilla
 }
