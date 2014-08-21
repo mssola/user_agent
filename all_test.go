@@ -48,6 +48,7 @@ var uastrings = []struct {
 	{"AndroidFirefoxTablet", "Mozilla/5.0 (Android; Tablet; rv:26.0) Gecko/26.0 Firefox/26.0"},
 	{"FirefoxOS", "Mozilla/5.0 (Mobile; rv:26.0) Gecko/26.0 Firefox/26.0"},
 	{"FirefoxOSTablet", "Mozilla/5.0 (Tablet; rv:26.0) Gecko/26.0 Firefox/26.0"},
+	{"FirefoxWinXP", "Mozilla/5.0 (Windows NT 5.2; rv:31.0) Gecko/20100101 Firefox/31.0"},
 
 	// Opera
 	{"OperaMac", "Opera/9.27 (Macintosh; Intel Mac OS X; U; en)"},
@@ -128,6 +129,7 @@ var expected = []string{
 	"Mozilla:5.0 Platform:Tablet OS:Android Browser:Firefox-26.0 Engine:Gecko-26.0 Bot:false Mobile:true",
 	"Mozilla:5.0 Platform:Mobile OS:FirefoxOS Browser:Firefox-26.0 Engine:Gecko-26.0 Bot:false Mobile:true",
 	"Mozilla:5.0 Platform:Tablet OS:FirefoxOS Browser:Firefox-26.0 Engine:Gecko-26.0 Bot:false Mobile:true",
+	"Mozilla:5.0 Platform:Windows OS:Windows XP x64 Edition Browser:Firefox-31.0 Engine:Gecko-20100101 Bot:false Mobile:false",
 
 	// Opera
 	"Platform:Macintosh OS:Intel Mac OS X Localization:en Browser:Opera-9.27 Engine:Presto Bot:false Mobile:false",
