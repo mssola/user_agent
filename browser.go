@@ -57,7 +57,12 @@ func (p *UserAgent) detectBrowser(sections []section) {
 					p.browser.Name = "Safari"
 				}
 			} else if engine.name == "Gecko" {
-				p.browser.Name = sections[2].name
+				name := sections[2].name
+				if name == "MRA" && slen > 4 {
+					name = sections[4].name
+					p.browser.Version = sections[4].version
+				}
+				p.browser.Name = name
 			} else if engine.name == "like" && sections[2].name == "Gecko" {
 				// This is the new user agent from Internet Explorer 11.
 				p.browser.Engine = "Trident"
