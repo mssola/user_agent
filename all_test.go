@@ -61,6 +61,7 @@ var uastrings = []struct {
 	{"OperaLinux", "Opera/9.80 (X11; Linux x86_64) Presto/2.12.388 Version/12.10"},
 	{"OperaAndroid", "Opera/9.80 (Android 4.2.1; Linux; Opera Mobi/ADR-1212030829) Presto/2.11.355 Version/12.10"},
 	{"OperaNested", "Opera/9.80 (Windows NT 5.1; MRA 6.0 (build 5831)) Presto/2.12.388 Version/12.10"},
+	{"OperaMRA", "Opera/9.80 (Windows NT 6.1; U; MRA 5.8 (build 4139); en) Presto/2.9.168 Version/11.50"},
 
 	// Other
 	{"Empty", ""},
@@ -143,6 +144,7 @@ var expected = []string{
 	"Platform:X11 OS:Linux x86_64 Browser:Opera-9.80 Engine:Presto-2.12.388 Bot:false Mobile:false",
 	"Platform:Android 4.2.1 OS:Linux Browser:Opera-9.80 Engine:Presto-2.11.355 Bot:false Mobile:true",
 	"Platform:Windows OS:Windows XP Browser:Opera-9.80 Engine:Presto-2.12.388 Bot:false Mobile:false",
+	"Platform:Windows OS:Windows 7 Localization:en Browser:Opera-9.80 Engine:Presto-2.9.168 Bot:false Mobile:false",
 
 	// Other
 	"Bot:false Mobile:false",

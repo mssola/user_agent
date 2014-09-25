@@ -161,20 +161,26 @@ func trident(p *UserAgent, comment []string) {
 // The first argument p is a reference to the current UserAgent and the second
 // argument is a slice of strings containing the comment.
 func opera(p *UserAgent, comment []string) {
+	slen := len(comment)
+
 	if strings.HasPrefix(comment[0], "Windows") {
 		p.platform = "Windows"
 		p.os = normalizeOS(comment[0])
-		if len(comment) > 2 {
-			p.localization = comment[2]
+		if slen > 2 {
+			if slen > 3 && strings.HasPrefix(comment[2], "MRA") {
+				p.localization = comment[3]
+			} else {
+				p.localization = comment[2]
+			}
 		}
 	} else {
 		if strings.HasPrefix(comment[0], "Android") {
 			p.mobile = true
 		}
 		p.platform = comment[0]
-		if len(comment) > 1 {
+		if slen > 1 {
 			p.os = comment[1]
-			if len(comment) > 3 {
+			if slen > 3 {
 				p.localization = comment[3]
 			}
 		} else {
