@@ -126,7 +126,10 @@ func (p *UserAgent) Parse(ua string) {
 		p.mozilla = sections[0].version
 		if !p.bot {
 			for _, v := range sections {
-				p.checkBot(v.comment)
+				if p.isBot(v.comment) {
+					p.bot = true
+					break
+				}
 			}
 			if !p.bot {
 				p.detectBrowser(sections)
@@ -136,21 +139,21 @@ func (p *UserAgent) Parse(ua string) {
 	}
 }
 
-// Check if we're dealing with a Bot.
-func (p *UserAgent) checkBot(comment []string) {
+// Returns true if we're dealing with a bot, false otherwise.
+func (p *UserAgent) isBot(comment []string) bool {
 	// Regular bots (Google, Bing, ...).
 	reg, _ := regexp.Compile("(?i)bot")
 	for _, v := range comment {
 		if reg.Match([]byte(v)) {
-			p.bot = true
-			return
+			return true
 		}
 	}
 
 	// Special case for the Baidu bot.
 	if len(comment) > 1 && strings.HasPrefix(comment[1], "Baidu") {
-		p.bot = true
+		return true
 	}
+	return false
 }
 
 // Returns the mozilla version (it's how the User Agent string begins:
