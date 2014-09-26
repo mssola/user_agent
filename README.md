@@ -11,6 +11,7 @@ package main
 
 import (
     "fmt"
+
     "github.com/mssola/user_agent"
 )
 
@@ -34,6 +35,16 @@ func main() {
     name, version = ua.Browser()
     fmt.Printf("%v\n", name)          // => "Chrome"
     fmt.Printf("%v\n", version)       // => "23.0.1271.97"
+
+    // Let's see an example with a bot.
+
+    ua.Parse("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)")
+
+    fmt.Printf("%v\n", ua.Bot())      // => true
+
+    name, version = ua.Browser()
+    fmt.Printf("%v\n", name)          // => Googlebot
+    fmt.Printf("%v\n", version)       // => 2.1
 }
 ~~~
 
