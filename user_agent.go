@@ -9,7 +9,6 @@
 package user_agent
 
 import (
-	"regexp"
 	"strings"
 )
 
@@ -31,6 +30,7 @@ type UserAgent struct {
 	browser      Browser
 	bot          bool
 	mobile       bool
+	undecided    bool
 }
 
 // Read from the given string until the given delimiter or the
@@ -98,6 +98,21 @@ func parseSection(ua string, index *int) (s section) {
 	return s
 }
 
+// Initialize the parser.
+func (p *UserAgent) initialize() {
+	p.mozilla = ""
+	p.platform = ""
+	p.os = ""
+	p.localization = ""
+	p.browser.Engine = ""
+	p.browser.EngineVersion = ""
+	p.browser.Name = ""
+	p.browser.Version = ""
+	p.bot = false
+	p.mobile = false
+	p.undecided = false
+}
+
 // Parse the given User-Agent string and get the resulting UserAgent object.
 //
 // Returns an UserAgent object that has been initialized after parsing
@@ -113,7 +128,7 @@ func New(ua string) *UserAgent {
 func (p *UserAgent) Parse(ua string) {
 	var sections []section
 
-	p.mobile = false
+	p.initialize()
 	for index, limit := 0, len(ua); index < limit; {
 		s := parseSection(ua, &index)
 		if !p.mobile && s.name == "Mobile" {
@@ -124,36 +139,14 @@ func (p *UserAgent) Parse(ua string) {
 
 	if len(sections) > 0 {
 		p.mozilla = sections[0].version
-		if !p.bot {
-			for _, v := range sections {
-				if p.isBot(v.comment) {
-					p.bot = true
-					break
-				}
-			}
-			if !p.bot {
-				p.detectBrowser(sections)
-				p.detectOS(sections[0])
-			}
+
+		p.detectBrowser(sections)
+		p.detectOS(sections[0])
+
+		if p.undecided {
+			p.checkBot(sections)
 		}
 	}
-}
-
-// Returns true if we're dealing with a bot, false otherwise.
-func (p *UserAgent) isBot(comment []string) bool {
-	// Regular bots (Google, Bing, ...).
-	reg, _ := regexp.Compile("(?i)bot")
-	for _, v := range comment {
-		if reg.Match([]byte(v)) {
-			return true
-		}
-	}
-
-	// Special case for the Baidu bot.
-	if len(comment) > 1 && strings.HasPrefix(comment[1], "Baidu") {
-		return true
-	}
-	return false
 }
 
 // Returns the mozilla version (it's how the User Agent string begins:

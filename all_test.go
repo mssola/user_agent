@@ -20,7 +20,11 @@ var uastrings = []struct {
 	{"GoogleBotSmartphone", "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"},
 	{"BingBot", "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"},
 	{"BaiduBot", "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)"},
-	{"TwitterBot", "Twitterbot"},
+	{"Twitterbot", "Twitterbot"},
+	{"YahooBot", "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)"},
+	{"FacebookExternalHit", "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"},
+	{"FacebookPlatform", "facebookplatform/1.0 (+http://developers.facebook.com)"},
+	{"FaceBot", "Facebot"},
 
 	// Internet Explorer
 	{"IE10", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)"},
@@ -100,11 +104,15 @@ var uastrings = []struct {
 // Slice of the expected results from the previous slice.
 var expected = []string{
 	// Bots
-	"Mozilla:5.0 Bot:true Mobile:false",
-	"Mozilla:5.0 Bot:true Mobile:true",
-	"Mozilla:5.0 Bot:true Mobile:false",
-	"Mozilla:5.0 Bot:true Mobile:false",
-	"Browser:Twitterbot Bot:true Mobile:true",
+	"Mozilla:5.0 Browser:Googlebot-2.1 Bot:true Mobile:false",
+	"Mozilla:5.0 Browser:Googlebot-2.1 Bot:true Mobile:true",
+	"Mozilla:5.0 Browser:bingbot-2.0 Bot:true Mobile:false",
+	"Mozilla:5.0 Browser:Baiduspider-2.0 Bot:true Mobile:false",
+	"Browser:Twitterbot Bot:true Mobile:false",
+	"Mozilla:5.0 Browser:Yahoo! Slurp Bot:true Mobile:false",
+	"Browser:facebookexternalhit-1.1 Bot:true Mobile:false",
+	"Browser:facebookplatform-1.0 Bot:true Mobile:false",
+	"Browser:Facebot Bot:true Mobile:false",
 
 	// Internet Explorer
 	"Mozilla:5.0 Platform:Windows OS:Windows 8 Browser:Internet Explorer-10.0 Engine:Trident Bot:false Mobile:false",
@@ -150,13 +158,13 @@ var expected = []string{
 
 	// Other
 	"Bot:false Mobile:false",
-	"Browser:nil Bot:true Mobile:true",
-	"Mozilla:4.0 Bot:false Mobile:false",
-	"Mozilla:5.0 Bot:false Mobile:false",
-	"Browser:amaya-9.51 Engine:libwww-5.4.0 Bot:true Mobile:true",
-	"Browser:Rails Engine:Testing Bot:true Mobile:true",
-	"Browser:Python-urllib-2.7 Bot:true Mobile:true",
-	"Browser:curl-7.28.1 Bot:true Mobile:true",
+	"Browser:nil Bot:false Mobile:false",
+	"Browser:Mozilla-4.0 Bot:false Mobile:false",
+	"Browser:Mozilla-5.0 Bot:false Mobile:false",
+	"Browser:amaya-9.51 Engine:libwww-5.4.0 Bot:false Mobile:false",
+	"Browser:Rails Engine:Testing Bot:false Mobile:false",
+	"Browser:Python-urllib-2.7 Bot:false Mobile:false",
+	"Browser:curl-7.28.1 Bot:false Mobile:false",
 
 	// WebKit
 	"Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Chrome-23.0.1271.97 Engine:AppleWebKit-537.11 Bot:false Mobile:false",

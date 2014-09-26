@@ -83,7 +83,9 @@ func webkit(p *UserAgent, comment []string) {
 		} else if len(comment) < 2 {
 			p.localization = comment[0]
 		} else if len(comment) < 3 {
-			p.os = normalizeOS(comment[1])
+			if !p.googleBot() {
+				p.os = normalizeOS(comment[1])
+			}
 		} else {
 			p.os = normalizeOS(comment[2])
 		}
@@ -221,6 +223,8 @@ func (p *UserAgent) detectOS(s section) {
 
 		// And finally get the OS depending on the engine.
 		switch p.browser.Engine {
+		case "":
+			p.undecided = true
 		case "Gecko":
 			gecko(p, s.comment)
 		case "AppleWebKit":
@@ -233,12 +237,8 @@ func (p *UserAgent) detectOS(s section) {
 			opera(p, s.comment)
 		}
 	} else {
-		// At this point, we assume that this is a bot.
-		p.bot = true
-		p.mobile = true
-		p.mozilla = ""
-		p.browser.Name = s.name
-		p.browser.Version = s.version
+		// Check whether this is a bot or just a weird browser.
+		p.undecided = true
 	}
 }
 
