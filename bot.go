@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-// Get the name of the bot from the website that maybe in the given comment. If
+// Get the name of the bot from the website that may be in the given comment. If
 // there is no website in the comment, then an empty string is returned.
 func getFromSite(comment []string) string {
 	if len(comment) == 0 {
@@ -67,12 +67,11 @@ func (p *UserAgent) setSimple(name, version string, bot bool) {
 
 // Fix some values for some weird browsers.
 func (p *UserAgent) fixOther(sections []section) {
-	if len(sections) == 0 {
-		return
+	if len(sections) > 0 {
+		p.browser.Name = sections[0].name
+		p.browser.Version = sections[0].version
+		p.mozilla = ""
 	}
-	p.browser.Name = sections[0].name
-	p.browser.Version = sections[0].version
-	p.mozilla = ""
 }
 
 // Check if we're dealing with a bot or with some weird browser. If that is the
