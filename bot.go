@@ -43,7 +43,7 @@ func getFromSite(comment []string) string {
 // accordingly.
 func (p *UserAgent) googleBot() bool {
 	// This is a hackish way to detect Google's mobile bot.
-	if p.platform == "iPhone" && p.browser.Name == "Safari" {
+	if strings.Index(p.ua, "Googlebot") != -1 {
 		p.platform = ""
 		p.undecided = true
 	}
