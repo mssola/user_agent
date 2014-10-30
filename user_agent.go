@@ -23,6 +23,7 @@ type section struct {
 // The UserAgent struct contains all the info that can be extracted
 // from the User-Agent string.
 type UserAgent struct {
+	ua           string
 	mozilla      string
 	platform     string
 	os           string
@@ -100,6 +101,7 @@ func parseSection(ua string, index *int) (s section) {
 
 // Initialize the parser.
 func (p *UserAgent) initialize() {
+	p.ua = ""
 	p.mozilla = ""
 	p.platform = ""
 	p.os = ""
@@ -129,6 +131,7 @@ func (p *UserAgent) Parse(ua string) {
 	var sections []section
 
 	p.initialize()
+	p.ua = ua
 	for index, limit := 0, len(ua); index < limit; {
 		s := parseSection(ua, &index)
 		if !p.mobile && s.name == "Mobile" {
