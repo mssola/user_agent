@@ -134,7 +134,7 @@ var expected = []string{
 	"Mozilla:4.0 Platform:Windows OS:Windows 8.1 Browser:Internet Explorer-7.0 Engine:Trident Bot:false Mobile:false",
 
 	// Microsoft Edge
-	"Mozilla:5.0 Platform:Windows OS:Windows NT 10.0 Browser:Edge-12.10240 Engine:EdgeHTML Bot:false Mobile:false",
+	"Mozilla:5.0 Platform:Windows OS:Windows 10 Browser:Edge-12.10240 Engine:EdgeHTML Bot:false Mobile:false",
 	"Mozilla:5.0 Platform:Windows OS:Windows Phone 10.0 Browser:Edge-12.10240 Engine:EdgeHTML Bot:false Mobile:true",
 
 	// Gecko
