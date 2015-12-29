@@ -7,12 +7,12 @@ package user_agent
 import "strings"
 
 // Normalize the name of the operating system. By now, this just
-// affects to Windows.
+// affects to Windows NT.
 //
 // Returns a string containing the normalized name for the Operating System.
 func normalizeOS(name string) string {
 	sp := strings.SplitN(name, " ", 3)
-	if len(sp) != 3 {
+	if len(sp) != 3 || sp[1] != "NT" {
 		return name
 	}
 
@@ -33,7 +33,7 @@ func normalizeOS(name string) string {
 		return "Windows 8"
 	case "6.3":
 		return "Windows 8.1"
-	case "6.4":
+	case "10.0":
 		return "Windows 10"
 	}
 	return name
