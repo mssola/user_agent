@@ -409,6 +409,38 @@ var uastrings = []struct {
 		ua:       "Mozilla/5.0 (SymbianOS/9.1; U; [en-us]) AppleWebKit/413 (KHTML, like Gecko) Safari/413",
 		expected: "Mozilla:5.0 Platform:Symbian OS:SymbianOS/9.1 Browser:Symbian-413 Engine:AppleWebKit-413 Bot:false Mobile:true",
 	},
+
+	// Dalvik
+	{
+		title:    "Dalvik - Dell:001DL",
+		ua:       "Dalvik/1.2.0 (Linux; U; Android 2.2.2; 001DL Build/FRG83G)",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.2.2 Bot:false Mobile:true",
+	},
+	{
+		title:    "Dalvik - HTC:001HT",
+		ua:       "Dalvik/1.4.0 (Linux; U; Android 2.3.3; 001HT Build/GRI40)",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.3.3 Bot:false Mobile:true",
+	},
+	{
+		title:    "Dalvik - ZTE:009Z",
+		ua:       "Dalvik/1.4.0 (Linux; U; Android 2.3.4; 009Z Build/GINGERBREAD)",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.3.4 Bot:false Mobile:true",
+	},
+	{
+		title:    "Dalvik - A850",
+		ua:       "Dalvik/1.6.0 (Linux; U; Android 4.2.2; A850 Build/JDQ39) Configuration/CLDC-1.1; Opera Mini/att/4.2",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.2 Bot:false Mobile:true",
+	},
+	{
+		title:    "Dalvik - Asus:T00Q",
+		ua:       "Dalvik/1.6.0 (Linux; U; Android 4.4.2; ASUS_T00Q Build/KVT49L)/CLDC-1.1",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.4.2 Bot:false Mobile:true",
+	},
+	{
+		title:    "Dalvik - W2430",
+		ua:       "Dalvik/1.6.0 (Linux; U; Android 4.0.4; W2430 Build/IMM76D)014; Profile/MIDP-2.1 Configuration/CLDC-1",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.0.4 Bot:false Mobile:true",
+	},
 }
 
 // Internal: beautify the UserAgent reference into a string so it can be

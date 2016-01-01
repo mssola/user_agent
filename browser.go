@@ -36,13 +36,16 @@ func (p *UserAgent) detectBrowser(sections []section) {
 	slen := len(sections)
 
 	if sections[0].name == "Opera" {
-		p.mozilla = ""
 		p.browser.Name = "Opera"
 		p.browser.Version = sections[0].version
 		p.browser.Engine = "Presto"
 		if slen > 1 {
 			p.browser.EngineVersion = sections[1].version
 		}
+	} else if sections[0].name == "Dalvik" {
+		// When Dalvik VM is in use, there is no browser info attached to ua.
+		// Although browser is still a Mozilla/5.0 compatible.
+		p.mozilla = "5.0"
 	} else if slen > 1 {
 		engine := sections[1]
 		p.browser.Engine = engine.name
