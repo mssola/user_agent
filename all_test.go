@@ -62,6 +62,26 @@ var uastrings = []struct {
 		ua:       "Facebot",
 		expected: "Browser:Facebot Bot:true Mobile:false",
 	},
+	{
+		title:    "NutchCVS",
+		ua:       "NutchCVS/0.8-dev (Nutch; http://lucene.apache.org/nutch/bot.html; nutch-agent@lucene.apache.org)",
+		expected: "Browser:NutchCVS Bot:true Mobile:false",
+	},
+	{
+		title:    "MJ12bot",
+		ua:       "Mozilla/5.0 (compatible; MJ12bot/v1.2.4; http://www.majestic12.co.uk/bot.php?+)",
+		expected: "Mozilla:5.0 Browser:MJ12bot-v1.2.4 Bot:true Mobile:false",
+	},
+	{
+		title:    "MJ12bot",
+		ua:       "MJ12bot/v1.0.8 (http://majestic12.co.uk/bot.php?+)",
+		expected: "Browser:MJ12bot Bot:true Mobile:false",
+	},
+	{
+		title:    "AhrefsBot",
+		ua:       "Mozilla/5.0 (compatible; AhrefsBot/4.0; +http://ahrefs.com/robot/)",
+		expected: "Mozilla:5.0 Browser:AhrefsBot-4.0 Bot:true Mobile:false",
+	},
 
 	// Internet Explorer
 	{
