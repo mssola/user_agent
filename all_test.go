@@ -174,6 +174,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Firefox-17.0 Engine:Gecko-20100101 Bot:false Mobile:false",
 	},
 	{
+		title:    "FirefoxLinux - Ubuntu V50",
+		ua:       "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0",
+		expected: "Mozilla:5.0 Platform:X11 OS:Ubuntu Browser:Firefox-50.0 Engine:Gecko-20100101 Bot:false Mobile:false",
+	},
+	{
 		title:    "FirefoxWin",
 		ua:       "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14",
 		expected: "Mozilla:5.0 Platform:Windows OS:Windows XP Localization:en-US Browser:Firefox-2.0.0.14 Engine:Gecko-20080404 Bot:false Mobile:false",
@@ -266,6 +271,11 @@ var uastrings = []struct {
 		expected: "Platform:X11 OS:Linux x86_64 Browser:Opera-9.80 Engine:Presto-2.12.388 Bot:false Mobile:false",
 	},
 	{
+		title:    "OperaLinux - Ubuntu V41",
+		ua:       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36 OPR/41.0.2353.69",
+		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Opera-41.0.2353.69 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+	},
+	{
 		title:    "OperaAndroid",
 		ua:       "Opera/9.80 (Android 4.2.1; Linux; Opera Mobi/ADR-1212030829) Presto/2.11.355 Version/12.10",
 		expected: "Platform:Android 4.2.1 OS:Linux Browser:Opera-9.80 Engine:Presto-2.11.355 Bot:false Mobile:true",
@@ -328,6 +338,11 @@ var uastrings = []struct {
 		title:    "ChromeLinux",
 		ua:       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11",
 		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Chrome-23.0.1271.97 Engine:AppleWebKit-537.11 Bot:false Mobile:false",
+	},
+	{
+		title:    "ChromeLinux - Ubuntu V55",
+		ua:       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36",
+		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Chrome-55.0.2883.75 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
 	},
 	{
 		title:    "ChromeWin7",
@@ -428,6 +443,16 @@ var uastrings = []struct {
 		title:    "SafariOnSymbian",
 		ua:       "Mozilla/5.0 (SymbianOS/9.1; U; [en-us]) AppleWebKit/413 (KHTML, like Gecko) Safari/413",
 		expected: "Mozilla:5.0 Platform:Symbian OS:SymbianOS/9.1 Browser:Symbian-413 Engine:AppleWebKit-413 Bot:false Mobile:true",
+	},
+	{
+		title:    "Chromium - Ubuntu V49",
+		ua:       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/49.0.2623.108 Chrome/49.0.2623.108 Safari/537.36",
+		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Chromium-49.0.2623.108 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+	},
+	{
+		title:    "Chromium - Ubuntu V55",
+		ua:       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/53.0.2785.143 Chrome/53.0.2785.143 Safari/537.36",
+		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Chromium-53.0.2785.143 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
 	},
 
 	// Dalvik
