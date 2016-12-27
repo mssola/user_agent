@@ -17,12 +17,6 @@ type OSInfo struct {
 
 	// Operating system version, e.g. 7 for Windows 7 or 10.8 for Max OS X Mountain Lion
 	Version string
-
-	// Same as ua.Localization()
-	Localization string
-
-	// Same as ua.Platform()
-	Platform string
 }
 
 // Normalize the name of the operating system. By now, this just
@@ -301,25 +295,13 @@ func (p *UserAgent) Localization() string {
 	return p.localization
 }
 
-// Returns combined information for the operating system.
-func (p *UserAgent) OSInfo() OSInfo {
-	// Special case for iPhone weirdness
-	os := strings.Replace(p.os, "like Mac OS X", "", 1)
-	os = strings.Replace(os, "CPU", "", 1)
-	os = strings.Trim(os, " ")
-
-	osSplit := strings.Split(os, " ")
-
-	// Special case for x64 edition of Windows
-	if os == "Windows XP x64 Edition" {
-		osSplit = osSplit[:len(osSplit)-2]
-	}
-
-	var name, version string
+// Return OS name and version from a slice of strings created from the full name of the OS.
+func osName(osSplit []string) (name, version string) {
 	if len(osSplit) == 1 {
 		name = osSplit[0]
 		version = ""
 	} else {
+		// Assume version is stored in the last part of the array.
 		nameSplit := osSplit[:len(osSplit)-1]
 		version = osSplit[len(osSplit)-1]
 
@@ -338,6 +320,24 @@ func (p *UserAgent) OSInfo() OSInfo {
 			version = ""
 		}
 	}
+	return name, version
+}
+
+// Returns combined information for the operating system.
+func (p *UserAgent) OSInfo() OSInfo {
+	// Special case for iPhone weirdness
+	os := strings.Replace(p.os, "like Mac OS X", "", 1)
+	os = strings.Replace(os, "CPU", "", 1)
+	os = strings.Trim(os, " ")
+
+	osSplit := strings.Split(os, " ")
+
+	// Special case for x64 edition of Windows
+	if os == "Windows XP x64 Edition" {
+		osSplit = osSplit[:len(osSplit)-2]
+	}
+
+	name, version := osName(osSplit)
 
 	// Special case for names that contain a forward slash version separator.
 	if strings.Contains(name, "/") {
@@ -350,10 +350,8 @@ func (p *UserAgent) OSInfo() OSInfo {
 	version = strings.Replace(version, "_", ".", -1)
 
 	return OSInfo{
-		FullName:     p.os,
-		Name:         name,
-		Version:      version,
-		Localization: p.localization,
-		Platform:     p.platform,
+		FullName: p.os,
+		Name:     name,
+		Version:  version,
 	}
 }

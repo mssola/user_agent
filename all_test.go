@@ -90,7 +90,7 @@ var uastrings = []struct {
 		title:      "IE10",
 		ua:         "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)",
 		expected:   "Mozilla:5.0 Platform:Windows OS:Windows 8 Browser:Internet Explorer-10.0 Engine:Trident Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows 8", "Windows", "8", "", "Windows"},
+		expectedOS: &OSInfo{"Windows 8", "Windows", "8"},
 	},
 	{
 		title:    "Tablet",
@@ -106,19 +106,19 @@ var uastrings = []struct {
 		title:      "Phone",
 		ua:         "Mozilla/4.0 (compatible; MSIE 7.0; Windows Phone OS 7.0; Trident/3.1; IEMobile/7.0; SAMSUNG; SGH-i917)",
 		expected:   "Mozilla:4.0 Platform:Windows OS:Windows Phone OS 7.0 Browser:Internet Explorer-7.0 Engine:Trident Bot:false Mobile:true",
-		expectedOS: &OSInfo{"Windows Phone OS 7.0", "Windows Phone OS", "7.0", "", "Windows"},
+		expectedOS: &OSInfo{"Windows Phone OS 7.0", "Windows Phone OS", "7.0"},
 	},
 	{
 		title:      "IE6",
 		ua:         "Mozilla/4.0 (compatible; MSIE6.0; Windows NT 5.0; .NET CLR 1.1.4322)",
 		expected:   "Mozilla:4.0 Platform:Windows OS:Windows 2000 Browser:Internet Explorer-6.0 Engine:Trident Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows 2000", "Windows", "2000", "", "Windows"},
+		expectedOS: &OSInfo{"Windows 2000", "Windows", "2000"},
 	},
 	{
 		title:      "IE8Compatibility",
 		ua:         "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3; MS-RTC LM 8)",
 		expected:   "Mozilla:4.0 Platform:Windows OS:Windows 7 Browser:Internet Explorer-8.0 Engine:Trident Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows 7", "Windows", "7", "", "Windows"},
+		expectedOS: &OSInfo{"Windows 7", "Windows", "7"},
 	},
 	{
 		title:    "IE10Compatibility",
@@ -129,7 +129,7 @@ var uastrings = []struct {
 		title:      "IE11Win81",
 		ua:         "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko",
 		expected:   "Mozilla:5.0 Platform:Windows OS:Windows 8.1 Browser:Internet Explorer-11.0 Engine:Trident Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows 8.1", "Windows", "8.1", "", "Windows"},
+		expectedOS: &OSInfo{"Windows 8.1", "Windows", "8.1"},
 	},
 	{
 		title:    "IE11Win7",
@@ -157,7 +157,7 @@ var uastrings = []struct {
 		title:      "EdgeDesktop",
 		ua:         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240",
 		expected:   "Mozilla:5.0 Platform:Windows OS:Windows 10 Browser:Edge-12.10240 Engine:EdgeHTML Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows 10", "Windows", "10", "", "Windows"},
+		expectedOS: &OSInfo{"Windows 10", "Windows", "10"},
 	},
 	{
 		title:    "EdgeMobile",
@@ -170,31 +170,31 @@ var uastrings = []struct {
 		title:      "FirefoxMac",
 		ua:         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0b8) Gecko/20100101 Firefox/4.0b8",
 		expected:   "Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10.6 Browser:Firefox-4.0b8 Engine:Gecko-20100101 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Intel Mac OS X 10.6", "Mac OS X", "10.6", "", "Macintosh"},
+		expectedOS: &OSInfo{"Intel Mac OS X 10.6", "Mac OS X", "10.6"},
 	},
 	{
 		title:      "FirefoxMacLoc",
 		ua:         "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13",
 		expected:   "Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10.6 Localization:en-US Browser:Firefox-3.6.13 Engine:Gecko-20101203 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Intel Mac OS X 10.6", "Mac OS X", "10.6", "en-US", "Macintosh"},
+		expectedOS: &OSInfo{"Intel Mac OS X 10.6", "Mac OS X", "10.6"},
 	},
 	{
 		title:      "FirefoxLinux",
 		ua:         "Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20100101 Firefox/17.0",
 		expected:   "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Firefox-17.0 Engine:Gecko-20100101 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Linux x86_64", "Linux", "", "", "X11"},
+		expectedOS: &OSInfo{"Linux x86_64", "Linux", ""},
 	},
 	{
 		title:      "FirefoxLinux - Ubuntu V50",
 		ua:         "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0",
 		expected:   "Mozilla:5.0 Platform:X11 OS:Ubuntu Browser:Firefox-50.0 Engine:Gecko-20100101 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Ubuntu", "Ubuntu", "", "", "X11"},
+		expectedOS: &OSInfo{"Ubuntu", "Ubuntu", ""},
 	},
 	{
 		title:      "FirefoxWin",
 		ua:         "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14",
 		expected:   "Mozilla:5.0 Platform:Windows OS:Windows XP Localization:en-US Browser:Firefox-2.0.0.14 Engine:Gecko-20080404 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows XP", "Windows", "XP", "en-US", "Windows"},
+		expectedOS: &OSInfo{"Windows XP", "Windows", "XP"},
 	},
 	{
 		title:    "Firefox29Win7",
@@ -205,13 +205,13 @@ var uastrings = []struct {
 		title:      "CaminoMac",
 		ua:         "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en; rv:1.8.1.14) Gecko/20080409 Camino/1.6 (like Firefox/2.0.0.14)",
 		expected:   "Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X Localization:en Browser:Camino-1.6 Engine:Gecko-20080409 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Intel Mac OS X", "Mac OS X", "", "en", "Macintosh"},
+		expectedOS: &OSInfo{"Intel Mac OS X", "Mac OS X", ""},
 	},
 	{
 		title:      "Iceweasel",
 		ua:         "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1) Gecko/20061024 Iceweasel/2.0 (Debian-2.0+dfsg-1)",
 		expected:   "Mozilla:5.0 Platform:X11 OS:Linux i686 Localization:en-US Browser:Iceweasel-2.0 Engine:Gecko-20061024 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Linux i686", "Linux", "", "en-US", "X11"},
+		expectedOS: &OSInfo{"Linux i686", "Linux", ""},
 	},
 	{
 		title:    "SeaMonkey",
@@ -227,13 +227,13 @@ var uastrings = []struct {
 		title:      "AndroidFirefoxTablet",
 		ua:         "Mozilla/5.0 (Android; Tablet; rv:26.0) Gecko/26.0 Firefox/26.0",
 		expected:   "Mozilla:5.0 Platform:Tablet OS:Android Browser:Firefox-26.0 Engine:Gecko-26.0 Bot:false Mobile:true",
-		expectedOS: &OSInfo{"Android", "Android", "", "", "Tablet"},
+		expectedOS: &OSInfo{"Android", "Android", ""},
 	},
 	{
 		title:      "FirefoxOS",
 		ua:         "Mozilla/5.0 (Mobile; rv:26.0) Gecko/26.0 Firefox/26.0",
 		expected:   "Mozilla:5.0 Platform:Mobile OS:FirefoxOS Browser:Firefox-26.0 Engine:Gecko-26.0 Bot:false Mobile:true",
-		expectedOS: &OSInfo{"FirefoxOS", "FirefoxOS", "", "", "Mobile"},
+		expectedOS: &OSInfo{"FirefoxOS", "FirefoxOS", ""},
 	},
 	{
 		title:    "FirefoxOSTablet",
@@ -244,7 +244,7 @@ var uastrings = []struct {
 		title:      "FirefoxWinXP",
 		ua:         "Mozilla/5.0 (Windows NT 5.2; rv:31.0) Gecko/20100101 Firefox/31.0",
 		expected:   "Mozilla:5.0 Platform:Windows OS:Windows XP x64 Edition Browser:Firefox-31.0 Engine:Gecko-20100101 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows XP x64 Edition", "Windows", "XP", "", "Windows"},
+		expectedOS: &OSInfo{"Windows XP x64 Edition", "Windows", "XP"},
 	},
 	{
 		title:    "FirefoxMRA",
@@ -257,7 +257,7 @@ var uastrings = []struct {
 		title:      "OperaMac",
 		ua:         "Opera/9.27 (Macintosh; Intel Mac OS X; U; en)",
 		expected:   "Platform:Macintosh OS:Intel Mac OS X Localization:en Browser:Opera-9.27 Engine:Presto Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Intel Mac OS X", "Mac OS X", "", "en", "Macintosh"},
+		expectedOS: &OSInfo{"Intel Mac OS X", "Mac OS X", ""},
 	},
 	{
 		title:    "OperaWin",
@@ -273,7 +273,7 @@ var uastrings = []struct {
 		title:      "OperaWin2Comment",
 		ua:         "Opera/9.80 (Windows NT 6.0; WOW64) Presto/2.12.388 Version/12.15",
 		expected:   "Platform:Windows OS:Windows Vista Browser:Opera-9.80 Engine:Presto-2.12.388 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Windows Vista", "Windows", "Vista", "", "Windows"},
+		expectedOS: &OSInfo{"Windows Vista", "Windows", "Vista"},
 	},
 	{
 		title:    "OperaMinimal",
@@ -294,13 +294,13 @@ var uastrings = []struct {
 		title:      "OperaLinux - Ubuntu V41",
 		ua:         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36 OPR/41.0.2353.69",
 		expected:   "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Opera-41.0.2353.69 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Linux x86_64", "Linux", "", "", "X11"},
+		expectedOS: &OSInfo{"Linux x86_64", "Linux", ""},
 	},
 	{
 		title:      "OperaAndroid",
 		ua:         "Opera/9.80 (Android 4.2.1; Linux; Opera Mobi/ADR-1212030829) Presto/2.11.355 Version/12.10",
 		expected:   "Platform:Android 4.2.1 OS:Linux Browser:Opera-9.80 Engine:Presto-2.11.355 Bot:false Mobile:true",
-		expectedOS: &OSInfo{"Linux", "Linux", "", "", "Android 4.2.1"},
+		expectedOS: &OSInfo{"Linux", "Linux", ""},
 	},
 	{
 		title:    "OperaNested",
@@ -360,7 +360,7 @@ var uastrings = []struct {
 		title:      "ChromeLinux",
 		ua:         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11",
 		expected:   "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Chrome-23.0.1271.97 Engine:AppleWebKit-537.11 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Linux x86_64", "Linux", "", "", "X11"},
+		expectedOS: &OSInfo{"Linux x86_64", "Linux", ""},
 	},
 	{
 		title:    "ChromeLinux - Ubuntu V55",
@@ -381,7 +381,7 @@ var uastrings = []struct {
 		title:      "ChromeMac",
 		ua:         "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.231 Safari/534.10",
 		expected:   "Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10_6_5 Localization:en-US Browser:Chrome-8.0.552.231 Engine:AppleWebKit-534.10 Bot:false Mobile:false",
-		expectedOS: &OSInfo{"Intel Mac OS X 10_6_5", "Mac OS X", "10.6.5", "en-US", "Macintosh"},
+		expectedOS: &OSInfo{"Intel Mac OS X 10_6_5", "Mac OS X", "10.6.5"},
 	},
 	{
 		title:    "SafariMac",
@@ -397,7 +397,7 @@ var uastrings = []struct {
 		title:      "iPhone7",
 		ua:         "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_3 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B511 Safari/9537.53",
 		expected:   "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 7_0_3 like Mac OS X Browser:Safari-7.0 Engine:AppleWebKit-537.51.1 Bot:false Mobile:true",
-		expectedOS: &OSInfo{"CPU iPhone OS 7_0_3 like Mac OS X", "iPhone OS", "7.0.3", "", "iPhone"},
+		expectedOS: &OSInfo{"CPU iPhone OS 7_0_3 like Mac OS X", "iPhone OS", "7.0.3"},
 	},
 	{
 		title:    "iPhone",
@@ -428,7 +428,7 @@ var uastrings = []struct {
 		title:      "BlackBerry",
 		ua:         "Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebKit/534.1+ (KHTML, Like Gecko) Version/6.0.0.141 Mobile Safari/534.1+",
 		expected:   "Mozilla:5.0 Platform:BlackBerry OS:BlackBerry 9800 Localization:en Browser:BlackBerry-6.0.0.141 Engine:AppleWebKit-534.1+ Bot:false Mobile:true",
-		expectedOS: &OSInfo{"BlackBerry 9800", "BlackBerry", "9800", "en", "BlackBerry"},
+		expectedOS: &OSInfo{"BlackBerry 9800", "BlackBerry", "9800"},
 	},
 	{
 		title:    "BB10",
@@ -439,7 +439,7 @@ var uastrings = []struct {
 		title:      "Ericsson",
 		ua:         "Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525",
 		expected:   "Mozilla:5.0 Platform:Symbian OS:SymbianOS/9.4 Browser:Symbian-3.0 Engine:AppleWebKit-525 Bot:false Mobile:true",
-		expectedOS: &OSInfo{"SymbianOS/9.4", "SymbianOS", "9.4", "", "Symbian"},
+		expectedOS: &OSInfo{"SymbianOS/9.4", "SymbianOS", "9.4"},
 	},
 	{
 		title:    "ChromeAndroid",
@@ -507,7 +507,7 @@ var uastrings = []struct {
 		title:      "Dalvik - Asus:T00Q",
 		ua:         "Dalvik/1.6.0 (Linux; U; Android 4.4.2; ASUS_T00Q Build/KVT49L)/CLDC-1.1",
 		expected:   "Mozilla:5.0 Platform:Linux OS:Android 4.4.2 Bot:false Mobile:true",
-		expectedOS: &OSInfo{"Android 4.4.2", "Android", "4.4.2", "", "Linux"},
+		expectedOS: &OSInfo{"Android 4.4.2", "Android", "4.4.2"},
 	},
 	{
 		title:    "Dalvik - W2430",
