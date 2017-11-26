@@ -561,18 +561,20 @@ func beautify(ua *UserAgent) (s string) {
 // The test suite.
 func TestUserAgent(t *testing.T) {
 	for _, tt := range uastrings {
-		ua := New(tt.ua)
-		got := beautify(ua)
-		if tt.expected != got {
-			t.Errorf("\nTest     %v\ngot:     %q\nexpected %q\n", tt.title, got, tt.expected)
-		}
-
-		if tt.expectedOS != nil {
-			gotOSInfo := ua.OSInfo()
-			if !reflect.DeepEqual(tt.expectedOS, &gotOSInfo) {
-				t.Errorf("\nTest     %v\ngot:     %#v\nexpected %#v\n", tt.title, gotOSInfo, tt.expectedOS)
+		t.Run(tt.title, func(t *testing.T) {
+			ua := New(tt.ua)
+			got := beautify(ua)
+			if tt.expected != got {
+				t.Errorf("\nTest     %v\ngot:     %q\nexpected %q\n", tt.title, got, tt.expected)
 			}
-		}
+
+			if tt.expectedOS != nil {
+				gotOSInfo := ua.OSInfo()
+				if !reflect.DeepEqual(tt.expectedOS, &gotOSInfo) {
+					t.Errorf("\nTest     %v\ngot:     %#v\nexpected %#v\n", tt.title, gotOSInfo, tt.expectedOS)
+				}
+			}
+		})
 	}
 }
 
