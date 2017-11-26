@@ -89,6 +89,9 @@ func webkit(p *UserAgent, comment []string) {
 		if len(comment) > 3 {
 			p.localization = comment[3]
 		}
+		if len(comment) == 3 {
+			_ = p.googleBot()
+		}
 	} else if len(comment) > 0 {
 		if len(comment) > 3 {
 			p.localization = comment[3]
