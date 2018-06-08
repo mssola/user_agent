@@ -229,6 +229,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:Mobile OS:Android Browser:Firefox-17.0 Engine:Gecko-17.0 Bot:false Mobile:true",
 	},
 	{
+		title:    "AndroidFirefoxNougat",
+		ua:       "Mozilla/5.0 (Android 7.0; Mobile; rv:60.0) Gecko/60.0 Firefox/60.0",
+		expected: "Mozilla:5.0 Platform:Mobile OS:Android 7.0 Browser:Firefox-60.0 Engine:Gecko-60.0 Bot:false Mobile:true",
+	},
+	{
 		title:      "AndroidFirefoxTablet",
 		ua:         "Mozilla/5.0 (Android; Tablet; rv:26.0) Gecko/26.0 Firefox/26.0",
 		expected:   "Mozilla:5.0 Platform:Tablet OS:Android Browser:Firefox-26.0 Engine:Gecko-26.0 Bot:false Mobile:true",

@@ -129,7 +129,7 @@ func gecko(p *UserAgent, comment []string) {
 				p.os = normalizeOS(comment[1])
 			}
 		} else {
-			if p.platform == "Android" {
+			if strings.Contains(p.platform, "Android") {
 				p.mobile = true
 				p.platform, p.os = normalizeOS(comment[1]), p.platform
 			} else if comment[0] == "Mobile" || comment[0] == "Tablet" {
