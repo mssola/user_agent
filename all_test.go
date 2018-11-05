@@ -89,6 +89,16 @@ var uastrings = []struct {
 		ua:       "Mozilla/5.0 (compatible; AhrefsBot/4.0; +http://ahrefs.com/robot/)",
 		expected: "Mozilla:5.0 Browser:AhrefsBot-4.0 Bot:true Mobile:false",
 	},
+	{
+		title:    "AdsBotGoogle",
+		ua:       "AdsBot-Google (+http://www.google.com/adsbot.html)",
+		expected: "Browser:AdsBot-Google Bot:true Mobile:false",
+	},
+	{
+		title:    "AdsBotGoogleMobile",
+		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 (compatible; AdsBot-Google-Mobile; +http://www.google.com/mobile/adsbot.html)",
+		expected: "Mozilla:5.0 Browser:AdsBot-Google-Mobile Bot:true Mobile:true",
+	},
 
 	// Internet Explorer
 	{

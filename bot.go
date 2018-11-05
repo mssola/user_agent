@@ -43,8 +43,9 @@ func getFromSite(comment []string) string {
 // mobile bot. This function also modifies some attributes in the receiver
 // accordingly.
 func (p *UserAgent) googleBot() bool {
-	// This is a hackish way to detect Google's mobile bot.
-	if strings.Index(p.ua, "Googlebot") != -1 {
+	// This is a hackish way to detect Google's mobile bot (Googlebot, AdsBot-Google-Mobile, etc.).
+	// See https://support.google.com/webmasters/answer/1061943
+	if strings.Index(p.ua, "Google") != -1 {
 		p.platform = ""
 		p.undecided = true
 	}
