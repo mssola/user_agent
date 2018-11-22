@@ -534,6 +534,16 @@ var uastrings = []struct {
 		ua:       "Dalvik/1.6.0 (Linux; U; Android 4.0.4; W2430 Build/IMM76D)014; Profile/MIDP-2.1 Configuration/CLDC-1",
 		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.0.4 Bot:false Mobile:true",
 	},
+	{
+		title:    "Samsung S5 Facebook App",
+		ua:       "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/35.0.0.48.273;]",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 5.0 Localization:wv Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+	},
+	{
+		title:    "Facebook - No Browser Or OS",
+		ua:       "[FBAN/FB4A;FBAV/16.0.0.20.15;FBBV/4061184;FBDM/{density=1.5,width=540,height=960};FBLC/en_US;FB_FW/2;FBCR/MY CELCOM;FBPN/com.facebook.katana;FBDV/Lenovo A850+;FBSV/4.2.2;FBOP/1;FBCA/armeabi-v7a:armeabi;]",
+		expected: "Bot:false Mobile:false",
+	},
 }
 
 // Internal: beautify the UserAgent reference into a string so it can be
