@@ -85,13 +85,25 @@ func parseProduct(product []byte) (string, string) {
 // Returns a section containing the information that we could extract
 // from the last parsed section.
 func parseSection(ua string, index *int) (s section) {
-	buffer := readUntil(ua, index, ' ', false)
+	var buffer []byte
 
-	s.name, s.version = parseProduct(buffer)
+	// Check for empty products
+	if *index < len(ua) && ua[*index] != '(' && ua[*index] != '[' {
+		buffer = readUntil(ua, index, ' ', false)
+		s.name, s.version = parseProduct(buffer)
+	}
+
 	if *index < len(ua) && ua[*index] == '(' {
 		*index++
 		buffer = readUntil(ua, index, ')', true)
 		s.comment = strings.Split(string(buffer), "; ")
+		*index++
+	}
+
+	// Discards any trailing data within square brackets
+	if *index < len(ua) && ua[*index] == '[' {
+		*index++
+		buffer = readUntil(ua, index, ']', true)
 		*index++
 	}
 	return s
