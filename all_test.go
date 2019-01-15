@@ -467,6 +467,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.1 Browser:Chrome-18.0.1025.166 Engine:AppleWebKit-535.19 Bot:false Mobile:true",
 	},
 	{
+		title:    "Chrome for iOS",
+		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 11_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/67.0.3396.87 Mobile/15E302 Safari/604.1",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 11_3_1 like Mac OS X Browser:Chrome-67.0.3396.87 Engine:AppleWebKit-604.1.34 Bot:false Mobile:true",
+	},
+	{
 		title:    "WebkitNoPlatform",
 		ua:       "Mozilla/5.0 (en-us) AppleWebKit/525.13 (KHTML, like Gecko; Google Web Preview) Version/3.1 Safari/525.13",
 		expected: "Mozilla:5.0 Platform:en-us Localization:en-us Browser:Safari-3.1 Engine:AppleWebKit-525.13 Bot:false Mobile:false",

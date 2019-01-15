@@ -73,6 +73,8 @@ func (p *UserAgent) detectBrowser(sections []section) {
 						p.browser.Name = "Chrome"
 					} else if sections[sectionIndex].name == "Chromium" {
 						p.browser.Name = "Chromium"
+					} else if sections[sectionIndex].name == "CriOS" {
+						p.browser.Name = "Chrome"
 					} else {
 						p.browser.Name = "Safari"
 					}
