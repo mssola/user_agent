@@ -333,6 +333,31 @@ var uastrings = []struct {
 		expected: "Platform:Windows OS:Windows 7 Localization:en Browser:Opera-9.80 Engine:Presto-2.9.168 Bot:false Mobile:false",
 	},
 
+	// Yandex Browser
+	{
+		title:      "YandexBrowserLinux",
+		ua:         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 YaBrowser/19.1.0.2494 (beta) Yowser/2.5 Safari/537.36",
+		expected:   "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:YaBrowser-19.1.0.2494 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+		expectedOS: &OSInfo{"Linux x86_64", "Linux", ""},
+	},
+
+	{
+		title:    "YandexBrowserWindows",
+		ua:       "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 YaBrowser/17.3.1.840 Yowser/2.5 Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Windows OS:Windows 7 Browser:YaBrowser-17.3.1.840 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+	},
+
+	{
+		title:    "YandexBrowserAndroid",
+		ua:       "Mozilla/5.0 (Linux; Android 4.4.4; GT-I9300I Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 YaBrowser/17.9.0.523.00 Mobile Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.4.4 Browser:YaBrowser-17.9.0.523.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+	},
+
+	{
+		title:    "YandexBrowserIOS",
+		ua:       "Mozilla/5.0 (iPad; CPU OS 10_1_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 YaBrowser/16.11.1.716.11 Mobile/14B100 Safari/602.1",
+		expected: "Mozilla:5.0 Platform:iPad OS:CPU OS 10_1_1 like Mac OS X Browser:YaBrowser-16.11.1.716.11 Engine:AppleWebKit-602.1.50 Bot:false Mobile:true",
+	},
 	// Other
 	{
 		title:    "Empty",
