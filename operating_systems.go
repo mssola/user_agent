@@ -282,17 +282,17 @@ func (p *UserAgent) detectOS(s section) {
 	}
 }
 
-// Returns a string containing the platform..
+// Platform returns a string containing the platform..
 func (p *UserAgent) Platform() string {
 	return p.platform
 }
 
-// Returns a string containing the name of the Operating System.
+// OS returns a string containing the name of the Operating System.
 func (p *UserAgent) OS() string {
 	return p.os
 }
 
-// Returns a string containing the localization.
+// Localization returns a string containing the localization.
 func (p *UserAgent) Localization() string {
 	return p.localization
 }
@@ -325,7 +325,7 @@ func osName(osSplit []string) (name, version string) {
 	return name, version
 }
 
-// Returns combined information for the operating system.
+// OSInfo returns combined information for the operating system.
 func (p *UserAgent) OSInfo() OSInfo {
 	// Special case for iPhone weirdness
 	os := strings.Replace(p.os, "like Mac OS X", "", 1)
