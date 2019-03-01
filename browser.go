@@ -134,13 +134,13 @@ func (p *UserAgent) detectBrowser(sections []section) {
 	}
 }
 
-// Returns two strings. The first string is the name of the engine and the
+// Engine returns two strings. The first string is the name of the engine and the
 // second one is the version of the engine.
 func (p *UserAgent) Engine() (string, string) {
 	return p.browser.Engine, p.browser.EngineVersion
 }
 
-// Returns two strings. The first string is the name of the browser and the
+// Browser returns two strings. The first string is the name of the browser and the
 // second one is the version of the browser.
 func (p *UserAgent) Browser() (string, string) {
 	return p.browser.Name, p.browser.Version

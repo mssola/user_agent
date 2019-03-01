@@ -164,23 +164,23 @@ func (p *UserAgent) Parse(ua string) {
 	}
 }
 
-// Returns the mozilla version (it's how the User Agent string begins:
+// Mozilla returns the mozilla version (it's how the User Agent string begins:
 // "Mozilla/5.0 ...", unless we're dealing with Opera, of course).
 func (p *UserAgent) Mozilla() string {
 	return p.mozilla
 }
 
-// Returns true if it's a bot, false otherwise.
+// Bot returns true if it's a bot, false otherwise.
 func (p *UserAgent) Bot() bool {
 	return p.bot
 }
 
-// Returns true if it's a mobile device, false otherwise.
+// Mobile returns true if it's a mobile device, false otherwise.
 func (p *UserAgent) Mobile() bool {
 	return p.mobile
 }
 
-// Returns the original given user agent.
+// UA returns the original given user agent.
 func (p *UserAgent) UA() string {
 	return p.ua
 }
