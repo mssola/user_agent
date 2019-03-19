@@ -3,6 +3,6 @@ tenets:
   - import: codelingo/effective-go/avoid-annotations-in-comments
   - import: codelingo/effective-go/underscores-in-name
   - import: codelingo/go/golint
-  - import: ccodelingo/go/global-var
+  - import: codelingo/go/global-var
   - import: codelingo/go/tested
   - import: codelingo/lightning-network-daemon
