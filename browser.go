@@ -83,6 +83,13 @@ func (p *UserAgent) detectBrowser(sections []section) {
 							p.browser.Name = "Safari"
 						}
 					}
+					// Its possible the google-bot emulates these now
+					for _, comment := range engine.comment {
+						if len(comment) > 5 && strings.HasPrefix(comment, "Googlebot") {
+							p.undecided = true
+							break
+						}
+					}
 				}
 			} else if engine.name == "Gecko" {
 				name := sections[2].name

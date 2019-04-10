@@ -22,6 +22,8 @@ func getFromSite(comment []string) string {
 	idx := 2
 	if len(comment) < 3 {
 		idx = 0
+	} else if len(comment) == 4 {
+		idx = 3
 	}
 
 	// Pick the site.
@@ -34,7 +36,7 @@ func getFromSite(comment []string) string {
 
 		// This is a large comment, usually the name will be in the previous
 		// field of the comment.
-		return strings.TrimSpace(comment[1])
+		return strings.TrimSpace(comment[idx-1])
 	}
 	return ""
 }

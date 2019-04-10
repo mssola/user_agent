@@ -35,6 +35,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Browser:Googlebot-2.1 Bot:true Mobile:true",
 	},
 	{
+		title:    "GoogleBotEmulateMozilla",
+		ua:       "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36",
+		expected: "Mozilla:5.0 Browser:Googlebot-2.1 Bot:true Mobile:false",
+	},
+	{
 		title:    "BingBot",
 		ua:       "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
 		expected: "Mozilla:5.0 Browser:bingbot-2.0 Bot:true Mobile:false",
