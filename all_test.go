@@ -20,6 +20,21 @@ var uastrings = []struct {
 }{
 	// Bots
 	{
+		title:    "Slackbot-LinkExpanding", // see: https://api.slack.com/robots
+		ua:       "Slackbot-LinkExpanding 1.0 (+https://api.slack.com/robots)",
+		expected: "Browser:Slackbot-LinkExpanding Engine:1.0 Bot:true Mobile:false",
+	},
+	{
+		title:    "Slackbot",
+		ua:       "Slackbot 1.0 (+https://api.slack.com/robots)",
+		expected: "Browser:Slackbot Engine:1.0 Bot:true Mobile:false",
+	},
+	{
+		title:    "Slack-ImgProxy",
+		ua:       "Slack-ImgProxy 0.19 (+https://api.slack.com/robots)",
+		expected: "Browser:Slack-ImgProxy Engine:0.19 Bot:true Mobile:false",
+	},
+	{
 		title:    "apache-httpclient",
 		ua:       "Apache-HttpClient/4.2.3 (java 1.5)",
 		expected: "Browser:Apache-HttpClient Bot:true Mobile:false",

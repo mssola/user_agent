@@ -82,6 +82,8 @@ var botRegex = regexp.MustCompile("(?i)(bot|crawler|sp(i|y)der|search|worm|fetch
 
 var botSoftwareRegex = regexp.MustCompile("(?i)(httpclient|curl|wget|python|java)")
 
+var botNameRegex = regexp.MustCompile("(?i)(slackbot|slack-imgproxy)")
+
 // Check if we're dealing with a bot or with some weird browser. If that is the
 // case, the receiver will be modified accordingly.
 func (p *UserAgent) checkBot(sections []section) {
@@ -119,6 +121,8 @@ func (p *UserAgent) checkBot(sections []section) {
 				}
 				p.setSimple(results[0], version, true)
 				return
+			} else if botNameRegex.Match([]byte(v.name)) {
+				p.bot = true
 			}
 		}
 
