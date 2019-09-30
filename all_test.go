@@ -20,6 +20,21 @@ var uastrings = []struct {
 }{
 	// Bots
 	{
+		title:    "apache-httpclient",
+		ua:       "Apache-HttpClient/4.2.3 (java 1.5)",
+		expected: "Browser:Apache-HttpClient Bot:true Mobile:false",
+	},
+	{
+		title:    "Java",
+		ua:       "Java/1.7.0_65",
+		expected: "Browser:Java Bot:true Mobile:false",
+	},
+	{
+		title:    "Wget",
+		ua:       "Wget/1.12 (linux-gnu)",
+		expected: "Browser:Wget Bot:true Mobile:false",
+	},
+	{
 		title:    "GoogleBot",
 		ua:       "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
 		expected: "Mozilla:5.0 Browser:Googlebot-2.1 Bot:true Mobile:false",
