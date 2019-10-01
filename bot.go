@@ -93,8 +93,12 @@ func (p *UserAgent) checkBot(sections []section) {
 		p.mozilla = ""
 
 		// Check whether the name has some suspicious "bot" or "crawler" in his name.
-		if botRegex.Match([]byte(sections[0].name)) || botSoftwareRegex.Match([]byte(sections[0].name)) {
+		if botRegex.Match([]byte(sections[0].name)) {
 			p.setSimple(sections[0].name, "", true)
+			return
+		}
+		if botSoftwareRegex.Match([]byte(sections[0].name)) {
+			p.setSimple(sections[0].name, sections[0].version, true)
 			return
 		}
 

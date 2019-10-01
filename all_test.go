@@ -37,17 +37,17 @@ var uastrings = []struct {
 	{
 		title:    "apache-httpclient",
 		ua:       "Apache-HttpClient/4.2.3 (java 1.5)",
-		expected: "Browser:Apache-HttpClient Bot:true Mobile:false",
+		expected: "Browser:Apache-HttpClient-4.2.3 Bot:true Mobile:false",
 	},
 	{
 		title:    "Java",
 		ua:       "Java/1.7.0_65",
-		expected: "Browser:Java Bot:true Mobile:false",
+		expected: "Browser:Java-1.7.0_65 Bot:true Mobile:false",
 	},
 	{
 		title:    "Wget",
 		ua:       "Wget/1.12 (linux-gnu)",
-		expected: "Browser:Wget Bot:true Mobile:false",
+		expected: "Browser:Wget-1.12 Bot:true Mobile:false",
 	},
 	{
 		title:    "GoogleBot",
@@ -427,12 +427,12 @@ var uastrings = []struct {
 	{
 		title:    "Python",
 		ua:       "Python-urllib/2.7",
-		expected: "Browser:Python-urllib-2.7 Bot:false Mobile:false",
+		expected: "Browser:Python-urllib-2.7 Bot:true Mobile:false",
 	},
 	{
 		title:    "Curl",
 		ua:       "curl/7.28.1",
-		expected: "Browser:curl-7.28.1 Bot:false Mobile:false",
+		expected: "Browser:curl-7.28.1 Bot:true Mobile:false",
 	},
 
 	// WebKit
