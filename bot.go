@@ -97,6 +97,8 @@ func (p *UserAgent) checkBot(sections []section) {
 			p.setSimple(sections[0].name, "", true)
 			return
 		}
+
+		// Check whether the name has some software like "httpclient" or "curl" in his name.
 		if botSoftwareRegex.Match([]byte(sections[0].name)) {
 			p.setSimple(sections[0].name, sections[0].version, true)
 			return
