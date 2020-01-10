@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.1
+
+- 00a868fa17e7 add Firefox for iOS
+- 8c16c37f4e07 Add go.mod
+- 7e313fc62553 Use CodeLingo to Address Further Issues
+- 95b0c164394f Fix function comments based on best practices from Effective Go
+- 1df9e04ee4f5 test: mobile Yandex Browser
+- 6eb76c60b5e8 Add Yandex browser
+- 8b3999083770 Updating license notice
+- 82f141dea4a8 Detect Chrome for iOS correctly
+- 5723c361ed97 Facebook App Handling
+- 57c32981bd5f Add a new google bot user agent format
+
 ## 0.5.0
 
 ### Newly supported and improvements
