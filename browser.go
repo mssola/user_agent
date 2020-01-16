@@ -74,15 +74,21 @@ func (p *UserAgent) detectBrowser(sections []section) {
 						p.browser.Name = "YaBrowser"
 						p.browser.Version = sections[slen-3].version
 					default:
-						switch sections[sectionIndex].name {
-						case "Chrome", "CriOS":
-							p.browser.Name = "Chrome"
-						case "Chromium":
-							p.browser.Name = "Chromium"
-						case "FxiOS":
-							p.browser.Name = "Firefox"
+						switch sections[slen-2].name {
+						case "Electron":
+							p.browser.Name = "Electron"
+							p.browser.Version = sections[slen-2].version
 						default:
-							p.browser.Name = "Safari"
+							switch sections[sectionIndex].name {
+							case "Chrome", "CriOS":
+								p.browser.Name = "Chrome"
+							case "Chromium":
+								p.browser.Name = "Chromium"
+							case "FxiOS":
+								p.browser.Name = "Firefox"
+							default:
+								p.browser.Name = "Safari"
+							}
 						}
 					}
 					// It's possible the google-bot emulates these now
