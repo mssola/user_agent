@@ -541,6 +541,11 @@ var uastrings = []struct {
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4",
 		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 8_3 like Mac OS X Browser:Firefox-1.0 Engine:AppleWebKit-600.1.4 Bot:false Mobile:true",
 	},
+	{
+		title:    "Electron",
+		ua:       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CozyDrive/3.17.0  Chrome/73.0.3683.119 Electron/5.0.0 Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Windows OS:Windows 10 Browser:Electron-5.0.0 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+	},
 
 	// Dalvik
 	{
