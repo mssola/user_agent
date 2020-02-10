@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-var botFromSiteRegexp = regexp.MustCompile("http://.+\\.\\w+")
+var botFromSiteRegexp = regexp.MustCompile("http[s]?://.+\\.\\w+")
 
 // Get the name of the bot from the website that may be in the given comment. If
 // there is no website in the comment, then an empty string is returned.

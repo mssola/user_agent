@@ -104,6 +104,11 @@ var uastrings = []struct {
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 (compatible; AdsBot-Google-Mobile; +http://www.google.com/mobile/adsbot.html)",
 		expected: "Mozilla:5.0 Browser:AdsBot-Google-Mobile Bot:true Mobile:true",
 	},
+	{
+		title:    "APIs-Google",
+		ua:       "APIs-Google (+https://developers.google.com/webmasters/APIs-Google.html)",
+		expected: "Browser:APIs-Google Bot:true Mobile:false",
+	},
 
 	// Internet Explorer
 	{
