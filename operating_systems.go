@@ -4,7 +4,9 @@
 
 package user_agent
 
-import "strings"
+import (
+	"strings"
+)
 
 // Represents full information on the operating system extracted from the user agent.
 type OSInfo struct {
@@ -100,7 +102,7 @@ func webkit(p *UserAgent, comment []string) {
 		} else if len(comment) < 2 {
 			p.localization = comment[0]
 		} else if len(comment) < 3 {
-			if !p.googleOrBingBot() {
+			if !p.googleOrBingBot() && !p.iMessagePreview() {
 				p.os = normalizeOS(comment[1])
 			}
 		} else {
