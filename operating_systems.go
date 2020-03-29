@@ -89,7 +89,7 @@ func webkit(p *UserAgent, comment []string) {
 		if len(comment) > 3 {
 			p.localization = comment[3]
 		} else if len(comment) == 3 {
-			_ = p.googleBot()
+			_ = p.googleOrBingBot()
 		}
 	} else if len(comment) > 0 {
 		if len(comment) > 3 {
@@ -100,7 +100,7 @@ func webkit(p *UserAgent, comment []string) {
 		} else if len(comment) < 2 {
 			p.localization = comment[0]
 		} else if len(comment) < 3 {
-			if !p.googleBot() {
+			if !p.googleOrBingBot() {
 				p.os = normalizeOS(comment[1])
 			}
 		} else {

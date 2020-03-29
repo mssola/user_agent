@@ -93,7 +93,8 @@ func (p *UserAgent) detectBrowser(sections []section) {
 					}
 					// It's possible the google-bot emulates these now
 					for _, comment := range engine.comment {
-						if len(comment) > 5 && strings.HasPrefix(comment, "Googlebot") {
+						if len(comment) > 5 &&
+							(strings.HasPrefix(comment, "Googlebot") || strings.HasPrefix(comment, "bingbot"))  {
 							p.undecided = true
 							break
 						}
