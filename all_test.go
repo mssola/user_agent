@@ -547,6 +547,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 8_3 like Mac OS X Browser:Firefox-1.0 Engine:AppleWebKit-600.1.4 Bot:false Mobile:true",
 	},
 	{
+		title:    "Firefox Focus for iOS",
+		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/7.0.4 Mobile/16B91 Safari/605.1.15",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 12_1 like Mac OS X Browser:Firefox-7.0.4 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+	},
+	{
 		title:    "Electron",
 		ua:       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CozyDrive/3.17.0  Chrome/73.0.3683.119 Electron/5.0.0 Safari/537.36",
 		expected: "Mozilla:5.0 Platform:Windows OS:Windows 10 Browser:Electron-5.0.0 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
