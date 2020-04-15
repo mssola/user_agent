@@ -42,12 +42,15 @@ func getFromSite(comment []string) string {
 }
 
 // Returns true if the info that we currently have corresponds to the Google
-// mobile bot. This function also modifies some attributes in the receiver
+// or Bing mobile bot. This function also modifies some attributes in the receiver
 // accordingly.
-func (p *UserAgent) googleBot() bool {
-	// This is a hackish way to detect Google's mobile bot (Googlebot, AdsBot-Google-Mobile, etc.).
-	// See https://support.google.com/webmasters/answer/1061943
-	if strings.Index(p.ua, "Google") != -1 {
+func (p *UserAgent) googleOrBingBot() bool {
+	// This is a hackish way to detect
+	// Google's mobile bot (Googlebot, AdsBot-Google-Mobile, etc.)
+	// (See https://support.google.com/webmasters/answer/1061943)
+	// and Bing's mobile bot
+	// (See https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0)
+	if strings.Index(p.ua, "Google") != -1 || strings.Index(p.ua, "bingbot") != -1{
 		p.platform = ""
 		p.undecided = true
 	}
