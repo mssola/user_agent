@@ -13,6 +13,10 @@ build: $(GO_SRC)
 test:
 	@$(GO) test
 
+.PHONY: bench
+bench:
+	@$(GO) test -bench=.
+
 #
 # Validation tools.
 #
