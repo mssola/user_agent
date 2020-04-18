@@ -124,6 +124,11 @@ var uastrings = []struct {
 		ua:       "APIs-Google (+https://developers.google.com/webmasters/APIs-Google.html)",
 		expected: "Browser:APIs-Google Bot:true Mobile:false",
 	},
+	{
+		title:    "iMessage-preview",
+		ua:       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.4 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.4 facebookexternalhit/1.1 Facebot Twitterbot/1.0",
+		expected: "Mozilla:5.0 Platform:Macintosh Browser:iMessage-Preview-9.0.1 Bot:true Mobile:false",
+	},
 
 	// Internet Explorer
 	{

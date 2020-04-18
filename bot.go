@@ -57,6 +57,26 @@ func (p *UserAgent) googleOrBingBot() bool {
 	return p.undecided
 }
 
+// Returns true if we think that it is iMessage-Preview. This function also
+// modifies some attributes in the receiver accordingly.
+func (p *UserAgent) iMessagePreview() bool {
+	// iMessage-Preview doesn't advertise itself. We have a to rely on a hack
+	// to detect it: it impersonates both facebook and twitter bots.
+	// See https://medium.com/@siggi/apples-imessage-impersonates-twitter-facebook-bots-when-scraping-cef85b2cbb7d
+	if strings.Index(p.ua, "facebookexternalhit") == -1 {
+		return false
+	}
+	if strings.Index(p.ua, "Twitterbot") == -1 {
+		return false
+	}
+	p.bot = true
+	p.browser.Name = "iMessage-Preview"
+	p.browser.Engine = ""
+	p.browser.EngineVersion = ""
+	// We don't set the mobile flag because iMessage can be on iOS (mobile) or macOS (not mobile).
+	return true
+}
+
 // Set the attributes of the receiver as given by the parameters. All the other
 // parameters are set to empty.
 func (p *UserAgent) setSimple(name, version string, bot bool) {
