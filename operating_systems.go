@@ -8,7 +8,8 @@ import (
 	"strings"
 )
 
-// Represents full information on the operating system extracted from the user agent.
+// OSInfo represents full information on the operating system extracted from the
+// user agent.
 type OSInfo struct {
 	// Full name of the operating system. This is identical to the output of ua.OS()
 	FullName string

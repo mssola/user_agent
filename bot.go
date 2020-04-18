@@ -50,7 +50,7 @@ func (p *UserAgent) googleOrBingBot() bool {
 	// (See https://support.google.com/webmasters/answer/1061943)
 	// and Bing's mobile bot
 	// (See https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0)
-	if strings.Index(p.ua, "Google") != -1 || strings.Index(p.ua, "bingbot") != -1{
+	if strings.Index(p.ua, "Google") != -1 || strings.Index(p.ua, "bingbot") != -1 {
 		p.platform = ""
 		p.undecided = true
 	}

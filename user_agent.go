@@ -125,7 +125,8 @@ func (p *UserAgent) initialize() {
 	p.undecided = false
 }
 
-// Parse the given User-Agent string and get the resulting UserAgent object.
+// New parses the given User-Agent string and get the resulting UserAgent
+// object.
 //
 // Returns an UserAgent object that has been initialized after parsing
 // the given User-Agent string.

@@ -11,7 +11,7 @@ import (
 
 var ie11Regexp = regexp.MustCompile("^rv:(.+)$")
 
-// A struct containing all the information that we might be
+// Browser is a struct containing all the information that we might be
 // interested from the browser.
 type Browser struct {
 	// The name of the browser's engine.
@@ -94,7 +94,7 @@ func (p *UserAgent) detectBrowser(sections []section) {
 					// It's possible the google-bot emulates these now
 					for _, comment := range engine.comment {
 						if len(comment) > 5 &&
-							(strings.HasPrefix(comment, "Googlebot") || strings.HasPrefix(comment, "bingbot"))  {
+							(strings.HasPrefix(comment, "Googlebot") || strings.HasPrefix(comment, "bingbot")) {
 							p.undecided = true
 							break
 						}
