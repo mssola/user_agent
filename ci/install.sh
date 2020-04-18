@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright (C) 2012-2020 Miquel Sabaté Solà <mikisabate@gmail.com>
+# This file is licensed under the MIT license.
+# See the LICENSE file.
 
 # Hack so we work around old versions of Go which are no longer supported by
 # linting tools that we use in this project.
