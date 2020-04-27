@@ -116,6 +116,12 @@ func webkit(p *UserAgent, comment []string) {
 			}
 		}
 	}
+
+	// Special case for Firefox on iPad, where the platform is advertised as Macintosh instead of iPad
+	if p.platform == "Macintosh" && p.browser.Engine == "AppleWebKit" && p.browser.Name == "Firefox" {
+		p.platform = "iPad"
+		p.mobile = true
+	}
 }
 
 // Guess the OS, the localization and if this is a mobile device

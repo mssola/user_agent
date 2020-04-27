@@ -572,6 +572,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 12_1 like Mac OS X Browser:Firefox-7.0.4 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
 	{
+		title:    "Firefox on iPad",
+		ua:       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/24.1 Safari/605.1.15",
+		expected: "Mozilla:5.0 Platform:iPad OS:Intel Mac OS X 10.15 Browser:Firefox-24.1 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+	},
+	{
 		title:    "Electron",
 		ua:       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CozyDrive/3.17.0  Chrome/73.0.3683.119 Electron/5.0.0 Safari/537.36",
 		expected: "Mozilla:5.0 Platform:Windows OS:Windows 10 Browser:Electron-5.0.0 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
