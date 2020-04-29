@@ -1,5 +1,9 @@
 # Changelog
 
+## Not yet published
+
+- Fix detection of Firefox on iPad.
+
 ## 0.5.2
 
 - Detect Electron. See [commit](https://github.com/mssola/user_agent/commit/1a36963d74c0efca7de80dc7518a0958c66b3c4f).
