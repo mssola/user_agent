@@ -46,6 +46,12 @@ If you already have this tool installed, then simply perform:
 $ make git-validation
 ```
 
+One of the things you will notice is that it will check that the commits have a
+sign off, that is, that you have used the `-s` flag when calling `git
+commit`. This is a lightweight way for contributors to certify that they wrote
+or otherwise have the right to submit the code they are contributing into this
+project.
+
 This target is included inside of the `validate` one.
 
 ## Issue reporting
