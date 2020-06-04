@@ -624,6 +624,18 @@ var uastrings = []struct {
 		ua:       "[FBAN/FB4A;FBAV/16.0.0.20.15;FBBV/4061184;FBDM/{density=1.5,width=540,height=960};FBLC/en_US;FB_FW/2;FBCR/MY CELCOM;FBPN/com.facebook.katana;FBDV/Lenovo A850+;FBSV/4.2.2;FBOP/1;FBCA/armeabi-v7a:armeabi;]",
 		expected: "Bot:false Mobile:false",
 	},
+
+	// arm_64
+	{
+		title:    "Samsung S7 Edge - YaBrowser",
+		ua:       "Mozilla/5.0 (Linux; arm_64; Android 8.0.0; SM-G935F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 YaBrowser/19.12.3.101.00 Mobile Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:SM-G935F Browser:YaBrowser-19.12.3.101.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+	},
+	{
+		title:    "HUAWEI P20 lite - YaBrowser",
+		ua:       "Mozilla/5.0 (Linux; arm_64; Android 9; ANE-LX2J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 YaBrowser/20.2.6.114.00 Mobile Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:ANE-LX2J Browser:YaBrowser-20.2.6.114.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+	},
 }
 
 // Internal: beautify the UserAgent reference into a string so it can be
