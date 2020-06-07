@@ -78,7 +78,7 @@ func webkit(p *UserAgent, comment []string) {
 			p.browser.Name = "Android"
 		}
 		if len(comment) > 1 {
-			if comment[1] == "U" {
+			if comment[1] == "U" || comment[1] == "arm_64" {
 				if len(comment) > 2 {
 					p.os = comment[2]
 				} else {
@@ -131,7 +131,7 @@ func webkit(p *UserAgent, comment []string) {
 // argument is a slice of strings containing the comment.
 func gecko(p *UserAgent, comment []string) {
 	if len(comment) > 1 {
-		if comment[1] == "U" {
+		if comment[1] == "U" || comment[1] == "arm_64" {
 			if len(comment) > 2 {
 				p.os = normalizeOS(comment[2])
 			} else {
