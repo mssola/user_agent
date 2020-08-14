@@ -210,6 +210,14 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:Windows OS:Windows Phone 10.0 Browser:Edge-12.10240 Engine:EdgeHTML Bot:false Mobile:true",
 	},
 
+	// Microsoft Chromium Edge
+	{
+		title:      "EdgeDesktop",
+		ua:         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36 Edg/83.0.478.37",
+		expected:   "Mozilla:5.0 Platform:Windows OS:Windows 10 Browser:Edge-83.0.478.37 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+		expectedOS: &OSInfo{"Windows 10", "Windows", "10"},
+	},
+
 	// Gecko
 	{
 		title:      "FirefoxMac",
