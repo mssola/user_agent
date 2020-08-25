@@ -59,12 +59,26 @@ func (p *UserAgent) detectBrowser(sections []section) {
 			}
 			p.browser.Version = sections[sectionIndex].version
 			if engine.name == "AppleWebKit" {
+				for _, comment := range engine.comment {
+					if len(comment) > 5 &&
+						(strings.HasPrefix(comment, "Googlebot") || strings.HasPrefix(comment, "bingbot")) {
+						p.undecided = true
+						break
+					}
+				}
 				switch sections[slen-1].name {
 				case "Edge":
 					p.browser.Name = "Edge"
 					p.browser.Version = sections[slen-1].version
 					p.browser.Engine = "EdgeHTML"
 					p.browser.EngineVersion = ""
+				case "Edg":
+					if p.undecided != true {
+						p.browser.Name = "Edge"
+						p.browser.Version = sections[slen-1].version
+						p.browser.Engine = "AppleWebKit"
+						p.browser.EngineVersion = sections[slen-2].version
+					}
 				case "OPR":
 					p.browser.Name = "Opera"
 					p.browser.Version = sections[slen-1].version

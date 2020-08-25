@@ -4,6 +4,7 @@
 
 - Fix detection of Firefox on iPad.
 - Fix detection of Linux ARM-based Android.
+- Add detection of Chromium Edge on Windows.
 
 ## 0.5.2
 
