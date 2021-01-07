@@ -62,7 +62,7 @@ func normalizeOS(name string) string {
 // argument is a slice of strings containing the comment.
 func webkit(p *UserAgent, comment []string) {
 	if p.platform == "webOS" {
-		p.browser.Name = p.platform
+		p.browser.name = p.platform
 		p.os = "Palm"
 		if len(comment) > 2 {
 			p.localization = comment[2]
@@ -70,12 +70,12 @@ func webkit(p *UserAgent, comment []string) {
 		p.mobile = true
 	} else if p.platform == "Symbian" {
 		p.mobile = true
-		p.browser.Name = p.platform
+		p.browser.name = p.platform
 		p.os = comment[0]
 	} else if p.platform == "Linux" {
 		p.mobile = true
-		if p.browser.Name == "Safari" {
-			p.browser.Name = "Android"
+		if p.browser.name == "Safari" {
+			p.browser.name = "Android"
 		}
 		if len(comment) > 1 {
 			if comment[1] == "U" || comment[1] == "arm_64" {
@@ -110,7 +110,7 @@ func webkit(p *UserAgent, comment []string) {
 			p.os = normalizeOS(comment[2])
 		}
 		if p.platform == "BlackBerry" {
-			p.browser.Name = p.platform
+			p.browser.name = p.platform
 			if p.os == "Touch" {
 				p.os = p.platform
 			}
@@ -118,7 +118,9 @@ func webkit(p *UserAgent, comment []string) {
 	}
 
 	// Special case for Firefox on iPad, where the platform is advertised as Macintosh instead of iPad
-	if p.platform == "Macintosh" && p.browser.Engine == "AppleWebKit" && p.browser.Name == "Firefox" {
+	if p.platform == "Macintosh" &&
+		p.browser.engine == "AppleWebKit" &&
+		p.browser.name == "Firefox" {
 		p.platform = "iPad"
 		p.mobile = true
 	}
@@ -267,7 +269,7 @@ func (p *UserAgent) detectOS(s section) {
 		}
 
 		// And finally get the OS depending on the engine.
-		switch p.browser.Engine {
+		switch p.browser.engine {
 		case "":
 			p.undecided = true
 		case "Gecko":
