@@ -72,7 +72,7 @@ Read the [CHANGELOG.md](./CHANGELOG.md) file.
 ## License
 
 ```
-Copyright (c) 2012-2020 Miquel Sabaté Solà
+Copyright (c) 2012-2021 Miquel Sabaté Solà
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
