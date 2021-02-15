@@ -437,6 +437,11 @@ var uastrings = []struct {
 		ua:       "curl/7.28.1",
 		expected: "Browser:curl-7.28.1 Bot:false Mobile:false",
 	},
+	{
+		title:    "OkHttp",
+		ua:       "okhttp/4.2.2",
+		expected: "Browser:OkHttp-4.2.2 Bot:false Mobile:true",
+	},
 
 	// WebKit
 	{

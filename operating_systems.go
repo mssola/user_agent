@@ -285,6 +285,10 @@ func (p *UserAgent) detectOS(s section) {
 		if len(s.comment) > 0 {
 			dalvik(p, s.comment)
 		}
+	} else if s.name == "okhttp" {
+		p.mobile = true
+		p.browser.Name = "OkHttp"
+		p.browser.Version = s.version
 	} else {
 		// Check whether this is a bot or just a weird browser.
 		p.undecided = true
