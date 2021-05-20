@@ -70,9 +70,9 @@ func (p *UserAgent) iMessagePreview() bool {
 		return false
 	}
 	p.bot = true
-	p.browser.Name = "iMessage-Preview"
-	p.browser.Engine = ""
-	p.browser.EngineVersion = ""
+	p.browser.name = "iMessage-Preview"
+	p.browser.engine = ""
+	p.browser.engineVersion = ""
 	// We don't set the mobile flag because iMessage can be on iOS (mobile) or macOS (not mobile).
 	return true
 }
@@ -84,10 +84,10 @@ func (p *UserAgent) setSimple(name, version string, bot bool) {
 	if !bot {
 		p.mozilla = ""
 	}
-	p.browser.Name = name
-	p.browser.Version = version
-	p.browser.Engine = ""
-	p.browser.EngineVersion = ""
+	p.browser.name = name
+	p.browser.version = version
+	p.browser.engine = ""
+	p.browser.engineVersion = ""
 	p.os = ""
 	p.localization = ""
 }
@@ -95,8 +95,8 @@ func (p *UserAgent) setSimple(name, version string, bot bool) {
 // Fix some values for some weird browsers.
 func (p *UserAgent) fixOther(sections []section) {
 	if len(sections) > 0 {
-		p.browser.Name = sections[0].name
-		p.browser.Version = sections[0].version
+		p.browser.name = sections[0].name
+		p.browser.version = sections[0].version
 		p.mozilla = ""
 	}
 }

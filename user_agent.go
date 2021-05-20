@@ -26,7 +26,7 @@ type UserAgent struct {
 	platform     string
 	os           string
 	localization string
-	browser      Browser
+	browser      browser
 	bot          bool
 	mobile       bool
 	undecided    bool
@@ -116,10 +116,10 @@ func (p *UserAgent) initialize() {
 	p.platform = ""
 	p.os = ""
 	p.localization = ""
-	p.browser.Engine = ""
-	p.browser.EngineVersion = ""
-	p.browser.Name = ""
-	p.browser.Version = ""
+	p.browser.engine = ""
+	p.browser.engineVersion = ""
+	p.browser.name = ""
+	p.browser.version = ""
 	p.bot = false
 	p.mobile = false
 	p.undecided = false
