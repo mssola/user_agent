@@ -472,6 +472,11 @@ var uastrings = []struct {
 		expectedOS: &OSInfo{"Intel Mac OS X 10_6_5", "Mac OS X", "10.6.5"},
 	},
 	{
+		title:    "Headless Chrome",
+		ua:       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/92.0.4515.107 Safari/537.36",
+		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Headless Chrome-92.0.4515.107 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+	},
+	{
 		title:    "SafariMac",
 		ua:       "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16",
 		expected: "Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10_6_3 Localization:en-us Browser:Safari-5.0 Engine:AppleWebKit-533.16 Bot:false Mobile:false",
@@ -593,6 +598,16 @@ var uastrings = []struct {
 		title:    "Electron",
 		ua:       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CozyDrive/3.17.0  Chrome/73.0.3683.119 Electron/5.0.0 Safari/537.36",
 		expected: "Mozilla:5.0 Platform:Windows OS:Windows 10 Browser:Electron-5.0.0 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+	},
+	{
+		title:    "Coc Coc",
+		ua:       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/96.0.230 Chrome/90.0.4430.230 Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10_15_7 Browser:Coc Coc-96.0.230 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
+	},
+	{
+		title:    "LinkedInApp",
+		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_6 like Mac OS X Browser:Mobile App Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
 
 	// Dalvik
