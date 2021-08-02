@@ -609,6 +609,16 @@ var uastrings = []struct {
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]",
 		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_6 like Mac OS X Browser:Mobile App Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
+	{
+		title:    "Google App for iOS",
+		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/170.0.386351093 Mobile/15E148 Safari/604.1",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_1 like Mac OS X Browser:Google App-170.0.386351093 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+	},
+	{
+		title:    "DuckDuckGo Browser for iOS",
+		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.6 Mobile/15E148 DuckDuckGo/7 Safari/605.1.15",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_6 like Mac OS X Browser:DuckDuckGo-7 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+	},
 
 	// Dalvik
 	{

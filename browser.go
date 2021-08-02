@@ -90,7 +90,6 @@ func (p *UserAgent) detectBrowser(sections []section) {
 					case "YaBrowser":
 						p.browser.Name = "YaBrowser"
 						p.browser.Version = sections[slen-3].version
-					case "coc_cow_browser":
 					case "coc_coc_browser":
 						p.browser.Name = "Coc Coc"
 						p.browser.Version = sections[slen-3].version
@@ -98,6 +97,9 @@ func (p *UserAgent) detectBrowser(sections []section) {
 						switch sections[slen-2].name {
 						case "Electron":
 							p.browser.Name = "Electron"
+							p.browser.Version = sections[slen-2].version
+						case "DuckDuckGo":
+							p.browser.Name = "DuckDuckGo"
 							p.browser.Version = sections[slen-2].version
 						default:
 							switch sections[sectionIndex].name {
@@ -107,6 +109,8 @@ func (p *UserAgent) detectBrowser(sections []section) {
 								p.browser.Name = "Headless Chrome"
 							case "Chromium":
 								p.browser.Name = "Chromium"
+							case "GSA":
+								p.browser.Name = "Google App"
 							case "FxiOS":
 								p.browser.Name = "Firefox"
 							default:
