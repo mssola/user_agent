@@ -39,6 +39,16 @@ func main() {
     fmt.Printf("%v\n", name)          // => "Chrome"
     fmt.Printf("%v\n", version)       // => "23.0.1271.97"
 
+	// Get phone model
+	ua2 := user_agent.New("Mozilla/5.0 (Linux; Android 8.0.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/11.12 swan/2.11.0 baiduboxapp/11.15.0.0 (Baidu; P1 8.0.0)")
+	fmt.Printf("%v\n", ua2.Model())   // => MI 6
+
+	ua3 := user_agent.New("Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1")
+	fmt.Printf("%v\n", ua3.Model())   // => iPhone
+
+	ua4 := user_agent.New("Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1")
+	fmt.Printf("%v\n", ua4.Model())   // => Nexus One
+
     // Let's see an example with a bot.
 
     ua.Parse("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)")
