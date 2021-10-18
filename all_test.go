@@ -13,11 +13,10 @@ import (
 // Slice that contains all the tests. Each test is contained in a struct
 // that groups the title of the test, the User-Agent string to be tested and the expected value.
 var uastrings = []struct {
-	title         string
-	ua            string
-	expected      string
-	expectedOS    *OSInfo
-	exceptedModel string
+	title      string
+	ua         string
+	expected   string
+	expectedOS *OSInfo
 }{
 	// Bots
 	{
@@ -33,8 +32,7 @@ var uastrings = []struct {
 	{
 		title:    "GoogleBotSmartphone (Android)",
 		ua:       "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-		expected: "Mozilla:5.0 Browser:Googlebot-2.1 Bot:true Mobile:true",
-		exceptedModel: "Nexus 5X",
+		expected: "Mozilla:5.0 Model:Nexus 5X Browser:Googlebot-2.1 Bot:true Mobile:true",
 	},
 	{
 		title:    "GoogleBotEmulateMozilla",
@@ -54,7 +52,7 @@ var uastrings = []struct {
 	{
 		title:    "BingBotSmartphone(Android)",
 		ua:       "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 Edg/80.0.345.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
-		expected: "Mozilla:5.0 Browser:bingbot-2.0 Bot:true Mobile:true",
+		expected: "Mozilla:5.0 Model:Nexus 5X Browser:bingbot-2.0 Bot:true Mobile:true",
 	},
 	{
 		title:    "BingBotEmulateMozilla",
@@ -390,13 +388,13 @@ var uastrings = []struct {
 	{
 		title:    "YandexBrowserAndroid",
 		ua:       "Mozilla/5.0 (Linux; Android 4.4.4; GT-I9300I Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 YaBrowser/17.9.0.523.00 Mobile Safari/537.36",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.4.4 Browser:YaBrowser-17.9.0.523.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.4.4 Model:GT-I9300I Browser:YaBrowser-17.9.0.523.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 
 	{
 		title:    "YandexBrowserIOS",
 		ua:       "Mozilla/5.0 (iPad; CPU OS 10_1_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 YaBrowser/16.11.1.716.11 Mobile/14B100 Safari/602.1",
-		expected: "Mozilla:5.0 Platform:iPad OS:CPU OS 10_1_1 like Mac OS X Browser:YaBrowser-16.11.1.716.11 Engine:AppleWebKit-602.1.50 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPad OS:CPU OS 10_1_1 like Mac OS X Model:iPad Browser:YaBrowser-16.11.1.716.11 Engine:AppleWebKit-602.1.50 Bot:false Mobile:true",
 	},
 	// Other
 	{
@@ -491,13 +489,13 @@ var uastrings = []struct {
 	{
 		title:      "iPhone7",
 		ua:         "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_3 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B511 Safari/9537.53",
-		expected:   "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 7_0_3 like Mac OS X Browser:Safari-7.0 Engine:AppleWebKit-537.51.1 Bot:false Mobile:true",
+		expected:   "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 7_0_3 like Mac OS X Model:iPhone Browser:Safari-7.0 Engine:AppleWebKit-537.51.1 Bot:false Mobile:true",
 		expectedOS: &OSInfo{"CPU iPhone OS 7_0_3 like Mac OS X", "iPhone OS", "7.0.3"},
 	},
 	{
 		title:    "iPhone",
 		ua:       "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A102 Safari/419",
-		expected: "Mozilla:5.0 Platform:iPhone OS:CPU like Mac OS X Localization:en Browser:Safari-3.0 Engine:AppleWebKit-420.1 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU like Mac OS X Localization:en Model:iPhone Browser:Safari-3.0 Engine:AppleWebKit-420.1 Bot:false Mobile:true",
 	},
 	{
 		title:    "iPod",
@@ -507,7 +505,7 @@ var uastrings = []struct {
 	{
 		title:    "iPad",
 		ua:       "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 Safari/531.21.10",
-		expected: "Mozilla:5.0 Platform:iPad OS:CPU OS 3_2 like Mac OS X Localization:en-us Browser:Safari-4.0.4 Engine:AppleWebKit-531.21.10 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPad OS:CPU OS 3_2 like Mac OS X Localization:en-us Model:iPad Browser:Safari-4.0.4 Engine:AppleWebKit-531.21.10 Bot:false Mobile:true",
 	},
 	{
 		title:    "webOS",
@@ -517,7 +515,7 @@ var uastrings = []struct {
 	{
 		title:    "Android",
 		ua:       "Mozilla/5.0 (Linux; U; Android 1.5; de-; HTC Magic Build/PLAT-RC33) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 1.5 Localization:de- Browser:Android-3.1.2 Engine:AppleWebKit-528.5+ Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 1.5 Localization:de- Model:HTC Magic Browser:Android-3.1.2 Engine:AppleWebKit-528.5+ Bot:false Mobile:true",
 	},
 	{
 		title:      "BlackBerry",
@@ -539,12 +537,12 @@ var uastrings = []struct {
 	{
 		title:    "ChromeAndroid",
 		ua:       "Mozilla/5.0 (Linux; Android 4.2.1; Galaxy Nexus Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.1 Browser:Chrome-18.0.1025.166 Engine:AppleWebKit-535.19 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.1 Model:Galaxy Nexus Browser:Chrome-18.0.1025.166 Engine:AppleWebKit-535.19 Bot:false Mobile:true",
 	},
 	{
 		title:    "Chrome for iOS",
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 11_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/67.0.3396.87 Mobile/15E302 Safari/604.1",
-		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 11_3_1 like Mac OS X Browser:Chrome-67.0.3396.87 Engine:AppleWebKit-604.1.34 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 11_3_1 like Mac OS X Model:iPhone Browser:Chrome-67.0.3396.87 Engine:AppleWebKit-604.1.34 Bot:false Mobile:true",
 	},
 	{
 		title:    "WebkitNoPlatform",
@@ -554,7 +552,7 @@ var uastrings = []struct {
 	{
 		title:    "OperaWebkitMobile",
 		ua:       "Mozilla/5.0 (Linux; Android 4.2.2; Galaxy Nexus Build/JDQ39) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.58 Mobile Safari/537.31 OPR/14.0.1074.57453",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.2 Browser:Opera-14.0.1074.57453 Engine:AppleWebKit-537.31 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.2 Model:Galaxy Nexus Browser:Opera-14.0.1074.57453 Engine:AppleWebKit-537.31 Bot:false Mobile:true",
 	},
 	{
 		title:    "OperaWebkitDesktop",
@@ -584,17 +582,17 @@ var uastrings = []struct {
 	{
 		title:    "Firefox for iOS",
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4",
-		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 8_3 like Mac OS X Browser:Firefox-1.0 Engine:AppleWebKit-600.1.4 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 8_3 like Mac OS X Model:iPhone Browser:Firefox-1.0 Engine:AppleWebKit-600.1.4 Bot:false Mobile:true",
 	},
 	{
 		title:    "Firefox Focus for iOS",
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/7.0.4 Mobile/16B91 Safari/605.1.15",
-		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 12_1 like Mac OS X Browser:Firefox-7.0.4 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 12_1 like Mac OS X Model:iPhone Browser:Firefox-7.0.4 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
 	{
 		title:    "Firefox on iPad",
 		ua:       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/24.1 Safari/605.1.15",
-		expected: "Mozilla:5.0 Platform:iPad OS:Intel Mac OS X 10.15 Browser:Firefox-24.1 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPad OS:Intel Mac OS X 10.15 Model:iPad Browser:Firefox-24.1 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
 	{
 		title:    "Electron",
@@ -609,55 +607,55 @@ var uastrings = []struct {
 	{
 		title:    "LinkedInApp",
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]",
-		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_6 like Mac OS X Browser:Mobile App Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_6 like Mac OS X Model:iPhone Browser:Mobile App Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
 	{
 		title:    "Google App for iOS",
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/170.0.386351093 Mobile/15E148 Safari/604.1",
-		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_1 like Mac OS X Browser:Google App-170.0.386351093 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_1 like Mac OS X Model:iPhone Browser:Google App-170.0.386351093 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
 	{
 		title:    "DuckDuckGo Browser for iOS",
 		ua:       "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.6 Mobile/15E148 DuckDuckGo/7 Safari/605.1.15",
-		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_6 like Mac OS X Browser:DuckDuckGo-7 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 14_6 like Mac OS X Model:iPhone Browser:DuckDuckGo-7 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
 	},
 
 	// Dalvik
 	{
 		title:    "Dalvik - Dell:001DL",
 		ua:       "Dalvik/1.2.0 (Linux; U; Android 2.2.2; 001DL Build/FRG83G)",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.2.2 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.2.2 Model:001DL Bot:false Mobile:true",
 	},
 	{
 		title:    "Dalvik - HTC:001HT",
 		ua:       "Dalvik/1.4.0 (Linux; U; Android 2.3.3; 001HT Build/GRI40)",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.3.3 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.3.3 Model:001HT Bot:false Mobile:true",
 	},
 	{
 		title:    "Dalvik - ZTE:009Z",
 		ua:       "Dalvik/1.4.0 (Linux; U; Android 2.3.4; 009Z Build/GINGERBREAD)",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.3.4 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.3.4 Model:009Z Bot:false Mobile:true",
 	},
 	{
 		title:    "Dalvik - A850",
 		ua:       "Dalvik/1.6.0 (Linux; U; Android 4.2.2; A850 Build/JDQ39) Configuration/CLDC-1.1; Opera Mini/att/4.2",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.2 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.2.2 Model:A850 Bot:false Mobile:true",
 	},
 	{
 		title:      "Dalvik - Asus:T00Q",
 		ua:         "Dalvik/1.6.0 (Linux; U; Android 4.4.2; ASUS_T00Q Build/KVT49L)/CLDC-1.1",
-		expected:   "Mozilla:5.0 Platform:Linux OS:Android 4.4.2 Bot:false Mobile:true",
+		expected:   "Mozilla:5.0 Platform:Linux OS:Android 4.4.2 Model:ASUS_T00Q Bot:false Mobile:true",
 		expectedOS: &OSInfo{"Android 4.4.2", "Android", "4.4.2"},
 	},
 	{
 		title:    "Dalvik - W2430",
 		ua:       "Dalvik/1.6.0 (Linux; U; Android 4.0.4; W2430 Build/IMM76D)014; Profile/MIDP-2.1 Configuration/CLDC-1",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.0.4 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 4.0.4 Model:W2430 Bot:false Mobile:true",
 	},
 	{
 		title:    "Samsung S5 Facebook App",
 		ua:       "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/35.0.0.48.273;]",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 5.0 Localization:wv Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 5.0 Localization:wv Model:SM-G900P Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
 		title:    "Facebook - No Browser Or OS",
@@ -669,64 +667,44 @@ var uastrings = []struct {
 	{
 		title:    "Samsung S7 Edge - YaBrowser",
 		ua:       "Mozilla/5.0 (Linux; arm_64; Android 8.0.0; SM-G935F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 YaBrowser/19.12.3.101.00 Mobile Safari/537.36",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:SM-G935F Browser:YaBrowser-19.12.3.101.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
-		exceptedModel: "SM-G935F",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:SM-G935F Model:SM-G935F Browser:YaBrowser-19.12.3.101.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 
 	// Get Phone Model
 	{
 		title:         "HUAWEI P20 lite - YaBrowser",
 		ua:            "Mozilla/5.0 (Linux; arm_64; Android 9; ANE-LX2J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 YaBrowser/20.2.6.114.00 Mobile Safari/537.36",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:ANE-LX2J Browser:YaBrowser-20.2.6.114.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
-		exceptedModel: "ANE-LX2J",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:ANE-LX2J Model:ANE-LX2J Browser:YaBrowser-20.2.6.114.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
 		title:         "OPPO R9sk",
 		ua:            "Mozilla/5.0 (Linux; Android 7.1.1; OPPO R9sk) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 7.1.1 Browser:Chrome-76.0.3809.111 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
-		exceptedModel: "OPPO R9sk",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 7.1.1 Model:OPPO R9sk Browser:Chrome-76.0.3809.111 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
 		title:         "Nexus One",
 		ua:            "Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.3.7 Localization:en-us Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
-		exceptedModel: "Nexus One",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.3.7 Localization:en-us Model:Nexus One Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
 	},
 	{
 		title:         "HUAWEIELE",
 		ua:            "Mozilla/5.0 (Linux; Android 9; ELE-AL00 Build/HUAWEIELE-AL0001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.83 Mobile Safari/537.36 T7/11.15 baiduboxapp/11.15.5.10 (Baidu; P1 9)",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:wv Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
-		exceptedModel: "ELE-AL00",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:wv Model:ELE-AL00 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
 		title:         "Redmi Note 3",
 		ua:            "Mozilla/5.0 (Linux; U; Android 5.0.2; zh-cn; Redmi Note 3 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/8.8.7",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 5.0.2 Localization:zh-cn Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
-		exceptedModel: "Redmi Note 3",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 5.0.2 Localization:zh-cn Model:Redmi Note 3 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
 		title:         "XiaoMi 6",
 		ua:            "Mozilla/5.0 (Linux; Android 8.0.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/11.12 swan/2.11.0 baiduboxapp/11.15.0.0 (Baidu; P1 8.0.0)",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:wv Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
-		exceptedModel: "MI 6",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:wv Model:MI 6 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
 		title:         "HTC_Wildfire_A3333",
 		ua:            "Mozilla/5.0 (Linux; U; Android 2.2.1; zh-cn; HTC_Wildfire_A3333 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.2.1 Localization:zh-cn Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
-		exceptedModel: "HTC_Wildfire_A3333",
-	},
-	{
-		title:         "iPad",
-		ua:            "Mozilla/5.0 (iPad; U; CPU OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5",
-		expected:      "Mozilla:5.0 Platform:iPad OS:CPU OS 4_3_3 like Mac OS X Localization:en-us Browser:Safari-5.0.2 Engine:AppleWebKit-533.17.9 Bot:false Mobile:true",
-		exceptedModel: "iPad",
-	},
-	{
-		title:         "iPhone",
-		ua:            "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
-		expected:      "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 13_2_3 like Mac OS X Browser:Safari-13.0.3 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
-		exceptedModel: "iPhone",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.2.1 Localization:zh-cn Model:HTC_Wildfire_A3333 Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
 	},
 }
 
@@ -748,6 +726,9 @@ func beautify(ua *UserAgent) (s string) {
 	}
 	if len(ua.Localization()) > 0 {
 		s += "Localization:" + ua.Localization() + " "
+	}
+	if len(ua.Model()) > 0 {
+		s += "Model:" + fmt.Sprintf("%v", ua.Model()) + " "
 	}
 	str1, str2 := ua.Browser()
 	if len(str1) > 0 {
@@ -788,11 +769,6 @@ func TestUserAgent(t *testing.T) {
 			}
 		}
 
-		if tt.exceptedModel != "" {
-			if ua.Model() != tt.exceptedModel {
-				t.Errorf("\nTest     %v\ngot:     %q\nexpected %q\n", tt.title, got, tt.exceptedModel)
-			}
-		}
 	}
 }
 
