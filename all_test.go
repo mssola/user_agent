@@ -13,10 +13,11 @@ import (
 // Slice that contains all the tests. Each test is contained in a struct
 // that groups the title of the test, the User-Agent string to be tested and the expected value.
 var uastrings = []struct {
-	title      string
-	ua         string
-	expected   string
-	expectedOS *OSInfo
+	title         string
+	ua            string
+	expected      string
+	expectedOS    *OSInfo
+	exceptedModel string
 }{
 	// Bots
 	{
@@ -33,6 +34,7 @@ var uastrings = []struct {
 		title:    "GoogleBotSmartphone (Android)",
 		ua:       "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
 		expected: "Mozilla:5.0 Browser:Googlebot-2.1 Bot:true Mobile:true",
+		exceptedModel: "Nexus 5X",
 	},
 	{
 		title:    "GoogleBotEmulateMozilla",
@@ -668,11 +670,63 @@ var uastrings = []struct {
 		title:    "Samsung S7 Edge - YaBrowser",
 		ua:       "Mozilla/5.0 (Linux; arm_64; Android 8.0.0; SM-G935F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 YaBrowser/19.12.3.101.00 Mobile Safari/537.36",
 		expected: "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:SM-G935F Browser:YaBrowser-19.12.3.101.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		exceptedModel: "SM-G935F",
+	},
+
+	// Get Phone Model
+	{
+		title:         "HUAWEI P20 lite - YaBrowser",
+		ua:            "Mozilla/5.0 (Linux; arm_64; Android 9; ANE-LX2J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 YaBrowser/20.2.6.114.00 Mobile Safari/537.36",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:ANE-LX2J Browser:YaBrowser-20.2.6.114.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		exceptedModel: "ANE-LX2J",
 	},
 	{
-		title:    "HUAWEI P20 lite - YaBrowser",
-		ua:       "Mozilla/5.0 (Linux; arm_64; Android 9; ANE-LX2J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 YaBrowser/20.2.6.114.00 Mobile Safari/537.36",
-		expected: "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:ANE-LX2J Browser:YaBrowser-20.2.6.114.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		title:         "OPPO R9sk",
+		ua:            "Mozilla/5.0 (Linux; Android 7.1.1; OPPO R9sk) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 7.1.1 Browser:Chrome-76.0.3809.111 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		exceptedModel: "OPPO R9sk",
+	},
+	{
+		title:         "Nexus One",
+		ua:            "Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.3.7 Localization:en-us Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
+		exceptedModel: "Nexus One",
+	},
+	{
+		title:         "HUAWEIELE",
+		ua:            "Mozilla/5.0 (Linux; Android 9; ELE-AL00 Build/HUAWEIELE-AL0001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.83 Mobile Safari/537.36 T7/11.15 baiduboxapp/11.15.5.10 (Baidu; P1 9)",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:wv Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		exceptedModel: "ELE-AL00",
+	},
+	{
+		title:         "Redmi Note 3",
+		ua:            "Mozilla/5.0 (Linux; U; Android 5.0.2; zh-cn; Redmi Note 3 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/8.8.7",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 5.0.2 Localization:zh-cn Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		exceptedModel: "Redmi Note 3",
+	},
+	{
+		title:         "XiaoMi 6",
+		ua:            "Mozilla/5.0 (Linux; Android 8.0.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/11.12 swan/2.11.0 baiduboxapp/11.15.0.0 (Baidu; P1 8.0.0)",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:wv Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		exceptedModel: "MI 6",
+	},
+	{
+		title:         "HTC_Wildfire_A3333",
+		ua:            "Mozilla/5.0 (Linux; U; Android 2.2.1; zh-cn; HTC_Wildfire_A3333 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
+		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.2.1 Localization:zh-cn Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
+		exceptedModel: "HTC_Wildfire_A3333",
+	},
+	{
+		title:         "iPad",
+		ua:            "Mozilla/5.0 (iPad; U; CPU OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5",
+		expected:      "Mozilla:5.0 Platform:iPad OS:CPU OS 4_3_3 like Mac OS X Localization:en-us Browser:Safari-5.0.2 Engine:AppleWebKit-533.17.9 Bot:false Mobile:true",
+		exceptedModel: "iPad",
+	},
+	{
+		title:         "iPhone",
+		ua:            "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
+		expected:      "Mozilla:5.0 Platform:iPhone OS:CPU iPhone OS 13_2_3 like Mac OS X Browser:Safari-13.0.3 Engine:AppleWebKit-605.1.15 Bot:false Mobile:true",
+		exceptedModel: "iPhone",
 	},
 }
 
@@ -731,6 +785,12 @@ func TestUserAgent(t *testing.T) {
 			gotOSInfo := ua.OSInfo()
 			if !reflect.DeepEqual(tt.expectedOS, &gotOSInfo) {
 				t.Errorf("\nTest     %v\ngot:     %#v\nexpected %#v\n", tt.title, gotOSInfo, tt.expectedOS)
+			}
+		}
+
+		if tt.exceptedModel != "" {
+			if ua.Model() != tt.exceptedModel {
+				t.Errorf("\nTest     %v\ngot:     %q\nexpected %q\n", tt.title, got, tt.exceptedModel)
 			}
 		}
 	}
