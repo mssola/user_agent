@@ -728,7 +728,7 @@ func beautify(ua *UserAgent) (s string) {
 		s += "Localization:" + ua.Localization() + " "
 	}
 	if len(ua.Model()) > 0 {
-		s += "Model:" + fmt.Sprintf("%v", ua.Model()) + " "
+		s += "Model:" + ua.Model() + " "
 	}
 	str1, str2 := ua.Browser()
 	if len(str1) > 0 {
