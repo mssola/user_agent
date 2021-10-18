@@ -22,22 +22,23 @@ func main() {
     // The "New" function will create a new UserAgent object and it will parse
     // the given string. If you need to parse more strings, you can re-use
     // this object and call: ua.Parse("another string")
-    ua := user_agent.New("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11")
+    ua := user_agent.New("Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1")
 
-    fmt.Printf("%v\n", ua.Mobile())   // => false
+    fmt.Printf("%v\n", ua.Mobile())   // => true
     fmt.Printf("%v\n", ua.Bot())      // => false
     fmt.Printf("%v\n", ua.Mozilla())  // => "5.0"
+    fmt.Printf("%v\n", ua.Model())    // => "Nexus One"
 
-    fmt.Printf("%v\n", ua.Platform()) // => "X11"
-    fmt.Printf("%v\n", ua.OS())       // => "Linux x86_64"
+    fmt.Printf("%v\n", ua.Platform()) // => "Linux"
+    fmt.Printf("%v\n", ua.OS())       // => "Android 2.3.7"
 
     name, version := ua.Engine()
     fmt.Printf("%v\n", name)          // => "AppleWebKit"
-    fmt.Printf("%v\n", version)       // => "537.11"
+    fmt.Printf("%v\n", version)       // => "533.1"
 
     name, version = ua.Browser()
-    fmt.Printf("%v\n", name)          // => "Chrome"
-    fmt.Printf("%v\n", version)       // => "23.0.1271.97"
+    fmt.Printf("%v\n", name)          // => "Android"
+    fmt.Printf("%v\n", version)       // => "4.0"
 
     // Let's see an example with a bot.
 

@@ -26,6 +26,7 @@ type UserAgent struct {
 	platform     string
 	os           string
 	localization string
+	model        string
 	browser      Browser
 	bot          bool
 	mobile       bool
@@ -116,6 +117,7 @@ func (p *UserAgent) initialize() {
 	p.platform = ""
 	p.os = ""
 	p.localization = ""
+	p.model = ""
 	p.browser.Engine = ""
 	p.browser.EngineVersion = ""
 	p.browser.Name = ""
@@ -158,6 +160,7 @@ func (p *UserAgent) Parse(ua string) {
 
 		p.detectBrowser(sections)
 		p.detectOS(sections[0])
+		p.detectModel(sections[0])
 
 		if p.undecided {
 			p.checkBot(sections)

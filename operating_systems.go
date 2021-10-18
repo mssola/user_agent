@@ -310,6 +310,11 @@ func (p *UserAgent) Localization() string {
 	return p.localization
 }
 
+// Model returns a string containing the Phone Model like "Nexus 5X"
+func (p *UserAgent) Model() string{
+	return p.model
+}
+
 // Return OS name and version from a slice of strings created from the full name of the OS.
 func osName(osSplit []string) (name, version string) {
 	if len(osSplit) == 1 {
