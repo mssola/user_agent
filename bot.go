@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-var botFromSiteRegexp = regexp.MustCompile("http[s]?://.+\\.\\w+")
+var botFromSiteRegexp = regexp.MustCompile(`http[s]?://.+\.\w+`)
 
 // Get the name of the bot from the website that may be in the given comment. If
 // there is no website in the comment, then an empty string is returned.
@@ -50,7 +50,7 @@ func (p *UserAgent) googleOrBingBot() bool {
 	// (See https://support.google.com/webmasters/answer/1061943)
 	// and Bing's mobile bot
 	// (See https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0)
-	if strings.Index(p.ua, "Google") != -1 || strings.Index(p.ua, "bingbot") != -1 {
+	if strings.Contains(p.ua, "Google") || strings.Contains(p.ua, "bingbot") {
 		p.platform = ""
 		p.undecided = true
 	}
@@ -63,10 +63,10 @@ func (p *UserAgent) iMessagePreview() bool {
 	// iMessage-Preview doesn't advertise itself. We have a to rely on a hack
 	// to detect it: it impersonates both facebook and twitter bots.
 	// See https://medium.com/@siggi/apples-imessage-impersonates-twitter-facebook-bots-when-scraping-cef85b2cbb7d
-	if strings.Index(p.ua, "facebookexternalhit") == -1 {
+	if !strings.Contains(p.ua, "facebookexternalhit") {
 		return false
 	}
-	if strings.Index(p.ua, "Twitterbot") == -1 {
+	if !strings.Contains(p.ua, "Twitterbot") {
 		return false
 	}
 	p.bot = true

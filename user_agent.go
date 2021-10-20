@@ -104,7 +104,7 @@ func parseSection(ua string, index *int) (s section) {
 	// Discards any trailing data within square brackets
 	if *index < len(ua) && ua[*index] == '[' {
 		*index++
-		buffer = readUntil(ua, index, ']', true)
+		_ = readUntil(ua, index, ']', true)
 		*index++
 	}
 	return s

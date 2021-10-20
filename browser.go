@@ -73,7 +73,7 @@ func (p *UserAgent) detectBrowser(sections []section) {
 					p.browser.Engine = "EdgeHTML"
 					p.browser.EngineVersion = ""
 				case "Edg":
-					if p.undecided != true {
+					if !p.undecided {
 						p.browser.Name = "Edge"
 						p.browser.Version = sections[slen-1].version
 						p.browser.Engine = "AppleWebKit"
