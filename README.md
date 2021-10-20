@@ -1,6 +1,5 @@
-
 <p align="center">
-  <a href="https://travis-ci.org/mssola/user_agent" title="Travis CI status for the master branch"><img src="https://travis-ci.org/mssola/user_agent.svg?branch=master" alt="Build Status for master branch" /></a>
+  <a href="https://github.com/mssola/user_agent/actions/workflows/ci.yml" title="Travis CI status for the default branch"><img src="https://github.com/mssola/user_agent/actions/workflows/ci.yml/badge.svg" alt="Build Status for the default branch" /></a>
   <a href="http://godoc.org/github.com/mssola/user_agent" title="godoc.org page"><img src="https://godoc.org/github.com/mssola/user_agent?status.png" alt="godoc.org page" /></a>
   <a href="https://en.wikipedia.org/wiki/MIT_License" rel="nofollow"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-blue.svg" style="max-width:100%;"></a>
 </p>
