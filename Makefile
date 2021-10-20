@@ -15,7 +15,7 @@ bench:
 .PHONY: lint
 lint: git-validation cilint
 
-EPOCH_COMMIT ?= 2046da2a89bd
+EPOCH_COMMIT ?= 834b6d4d9e84
 .PHONY: git-validation
 git-validation:
 	@git-validation -q -range $(EPOCH_COMMIT)..HEAD -travis-pr-only=false

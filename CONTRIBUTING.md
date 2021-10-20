@@ -2,57 +2,21 @@
 
 ## Check that your changes do not break anything
 
-You can safely run the `ci` target locally:
+You can safely run tests and the linting utilities with the default `make` target:
 
 ```
-$ make ci
+$ make
 ```
 
-This will run all the make targets that will also be run on the CI, which are
-described below.
+Note that this target assumes that you have
+[golangci-lint](https://github.com/golangci/golangci-lint) and
+[git-valitation](https://github.com/vbatts/git-validation) already installed. If
+that is not the case, first install them to get a proper execution of the
+default `make` target.
 
-### Running tests
-
-Call the `test` make target:
-
-```bash
-$ make test
-```
-
-### Checking the style
-
-This project uses some standard tools in order to check the Go style. You can
-run them by calling the `validate-go` make target:
-
-```bash
-$ make validate-go
-```
-
-This target is included inside of the `validate` one.
-
-### Git validation
-
-In order to ensure that the git log is as maintainable as possible, the
-[git-validation](https://github.com/vbatts/git-validation) tool is used. You can
-install this tool by running:
-
-```bash
-$ go get -u github.com/vbatts/git-validation
-```
-
-If you already have this tool installed, then simply perform:
-
-```bash
-$ make git-validation
-```
-
-One of the things you will notice is that it will check that the commits have a
-sign off, that is, that you have used the `-s` flag when calling `git
-commit`. This is a lightweight way for contributors to certify that they wrote
-or otherwise have the right to submit the code they are contributing into this
-project.
-
-This target is included inside of the `validate` one.
+Otherwise, if you want to be more specific, refer to the `Makefile` to check
+which target fits your needs. That being said, the default target is usually
+what you want.
 
 ## Issue reporting
 
