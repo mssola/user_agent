@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    strategy:
+      matrix:
+        go: ['1.13', '1.14', '1.15', '1.16', '1.17']
+
+    name: Go ${{ matrix.go }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: git validation
+        run: |
+          go get -u github.com/vbatts/git-validation
+          make git-validation
+
+      - name: Lint
+        uses: golangci/golangci-lint-action@v2
