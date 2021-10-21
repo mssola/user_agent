@@ -18,7 +18,7 @@ lint: git-validation cilint
 EPOCH_COMMIT ?= 834b6d4d9e84
 .PHONY: git-validation
 git-validation:
-	@git-validation -q -range $(EPOCH_COMMIT)..HEAD -travis-pr-only=false
+	@git-validation -q -range $(EPOCH_COMMIT)..HEAD
 
 .PHONY: cilint
 cilint:

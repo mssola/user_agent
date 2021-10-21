@@ -24,7 +24,7 @@ jobs:
 
       - name: git validation
         run: |
-          go get -u github.com/vbatts/git-validation
+          go install github.com/vbatts/git-validation@latest
           make git-validation
 
       - name: Lint
