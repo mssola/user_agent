@@ -22,10 +22,5 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
-      - name: git validation
-        run: |
-          go install github.com/vbatts/git-validation@latest
-          make git-validation
-
       - name: Lint
         uses: golangci/golangci-lint-action@v2
