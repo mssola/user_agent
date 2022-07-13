@@ -672,39 +672,39 @@ var uastrings = []struct {
 
 	// Get Phone Model
 	{
-		title:         "HUAWEI P20 lite - YaBrowser",
-		ua:            "Mozilla/5.0 (Linux; arm_64; Android 9; ANE-LX2J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 YaBrowser/20.2.6.114.00 Mobile Safari/537.36",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:ANE-LX2J Model:ANE-LX2J Browser:YaBrowser-20.2.6.114.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		title:    "HUAWEI P20 lite - YaBrowser",
+		ua:       "Mozilla/5.0 (Linux; arm_64; Android 9; ANE-LX2J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 YaBrowser/20.2.6.114.00 Mobile Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:ANE-LX2J Model:ANE-LX2J Browser:YaBrowser-20.2.6.114.00 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
-		title:         "OPPO R9sk",
-		ua:            "Mozilla/5.0 (Linux; Android 7.1.1; OPPO R9sk) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 7.1.1 Model:OPPO R9sk Browser:Chrome-76.0.3809.111 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		title:    "OPPO R9sk",
+		ua:       "Mozilla/5.0 (Linux; Android 7.1.1; OPPO R9sk) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 7.1.1 Model:OPPO R9sk Browser:Chrome-76.0.3809.111 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
-		title:         "Nexus One",
-		ua:            "Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.3.7 Localization:en-us Model:Nexus One Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
+		title:    "Nexus One",
+		ua:       "Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.3.7 Localization:en-us Model:Nexus One Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
 	},
 	{
-		title:         "HUAWEIELE",
-		ua:            "Mozilla/5.0 (Linux; Android 9; ELE-AL00 Build/HUAWEIELE-AL0001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.83 Mobile Safari/537.36 T7/11.15 baiduboxapp/11.15.5.10 (Baidu; P1 9)",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:wv Model:ELE-AL00 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		title:    "HUAWEIELE",
+		ua:       "Mozilla/5.0 (Linux; Android 9; ELE-AL00 Build/HUAWEIELE-AL0001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.83 Mobile Safari/537.36 T7/11.15 baiduboxapp/11.15.5.10 (Baidu; P1 9)",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 9 Localization:wv Model:ELE-AL00 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
-		title:         "Redmi Note 3",
-		ua:            "Mozilla/5.0 (Linux; U; Android 5.0.2; zh-cn; Redmi Note 3 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/8.8.7",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 5.0.2 Localization:zh-cn Model:Redmi Note 3 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		title:    "Redmi Note 3",
+		ua:       "Mozilla/5.0 (Linux; U; Android 5.0.2; zh-cn; Redmi Note 3 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/8.8.7",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 5.0.2 Localization:zh-cn Model:Redmi Note 3 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
-		title:         "XiaoMi 6",
-		ua:            "Mozilla/5.0 (Linux; Android 8.0.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/11.12 swan/2.11.0 baiduboxapp/11.15.0.0 (Baidu; P1 8.0.0)",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:wv Model:MI 6 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+		title:    "XiaoMi 6",
+		ua:       "Mozilla/5.0 (Linux; Android 8.0.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/11.12 swan/2.11.0 baiduboxapp/11.15.0.0 (Baidu; P1 8.0.0)",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:wv Model:MI 6 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
-		title:         "HTC_Wildfire_A3333",
-		ua:            "Mozilla/5.0 (Linux; U; Android 2.2.1; zh-cn; HTC_Wildfire_A3333 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-		expected:      "Mozilla:5.0 Platform:Linux OS:Android 2.2.1 Localization:zh-cn Model:HTC_Wildfire_A3333 Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
+		title:    "HTC_Wildfire_A3333",
+		ua:       "Mozilla/5.0 (Linux; U; Android 2.2.1; zh-cn; HTC_Wildfire_A3333 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 2.2.1 Localization:zh-cn Model:HTC_Wildfire_A3333 Browser:Android-4.0 Engine:AppleWebKit-533.1 Bot:false Mobile:true",
 	},
 }
 

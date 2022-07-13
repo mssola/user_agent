@@ -311,7 +311,7 @@ func (p *UserAgent) Localization() string {
 }
 
 // Model returns a string containing the Phone Model like "Nexus 5X"
-func (p *UserAgent) Model() string{
+func (p *UserAgent) Model() string {
 	return p.model
 }
 
