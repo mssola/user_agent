@@ -3,6 +3,7 @@ package user_agent
 import (
 	"strings"
 )
+
 // detectModel some properties of the model from the given section.
 func (p *UserAgent) detectModel(s section) {
 	if !p.mobile {
@@ -16,10 +17,10 @@ func (p *UserAgent) detectModel(s section) {
 	if s.name == "Mozilla" && p.platform == "Linux" && len(s.comment) > 2 {
 		mostAndroidModel := s.comment[2]
 		if strings.Contains(mostAndroidModel, "Android") || strings.Contains(mostAndroidModel, "Linux") {
-			mostAndroidModel = s.comment[len(s.comment) - 1]
+			mostAndroidModel = s.comment[len(s.comment)-1]
 		}
 		tmp := strings.Split(mostAndroidModel, "Build")
-		if len(tmp) > 0  {
+		if len(tmp) > 0 {
 			p.model = strings.Trim(tmp[0], " ")
 			return
 		}
