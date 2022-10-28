@@ -697,6 +697,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:Linux OS:Android 5.0.2 Localization:zh-cn Model:Redmi Note 3 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
 	},
 	{
+		title:    "Redmi K40",
+		ua:       "Mozilla/5.0 (Linux; U; Android 12; zh-cn; M2012K11AC Build/SKQ1.211006.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.116 Mobile Safari/537.36 XiaoMi/MiuiBrowser/16.4.20 swan-mibrowser",
+		expected: "Mozilla:5.0 Platform:Linux OS:Android 12 Localization:zh-cn Model:M2012K11AC Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
+	},
+	{
 		title:    "XiaoMi 6",
 		ua:       "Mozilla/5.0 (Linux; Android 8.0.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/11.12 swan/2.11.0 baiduboxapp/11.15.0.0 (Baidu; P1 8.0.0)",
 		expected: "Mozilla:5.0 Platform:Linux OS:Android 8.0.0 Localization:wv Model:MI 6 Browser:Android-4.0 Engine:AppleWebKit-537.36 Bot:false Mobile:true",
