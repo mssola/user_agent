@@ -477,6 +477,11 @@ var uastrings = []struct {
 		expected: "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Headless Chrome-92.0.4515.107 Engine:AppleWebKit-537.36 Bot:false Mobile:false",
 	},
 	{
+		title:    "PhantomJS",
+		ua:       "Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1",
+		expected: "Mozilla:5.0 Platform:Unknown OS:Linux x86_64 Browser:PhantomJS-2.1.1 Engine:AppleWebKit-538.1 Bot:false Mobile:false",
+	},
+	{
 		title:    "SafariMac",
 		ua:       "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16",
 		expected: "Mozilla:5.0 Platform:Macintosh OS:Intel Mac OS X 10_6_3 Localization:en-us Browser:Safari-5.0 Engine:AppleWebKit-533.16 Bot:false Mobile:false",
