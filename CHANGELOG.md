@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0
+
+- Added information on the model of mobile devices. See [746647ad73b5](https://github.com/mssola/user_agent/commit/746647ad73b5ad8648175bbd07319c0a8ac559c6).
+- Added support for PhantomJS. See [6b5e6f6ebfa8](https://github.com/mssola/user_agent/commit/6b5e6f6ebfa87464ccdb42bac5448cbf46ce1ba1).
+
 ## 0.5.4
 
 - Add detection of Coc Coc Browser. See [897eb45aec23](https://github.com/mssola/user_agent/commit/897eb45aec2330e7566c48c9e54192aae84bd8e9).
